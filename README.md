@@ -1,4 +1,4 @@
-Anagram-Solver
+Anagram Solver
 ==============
 
 ![logo](
