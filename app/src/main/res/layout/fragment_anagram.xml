@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bmpak.anagramsolver.ui.AnagramFragment">
+
+    <LinearLayout
+        android:id="@+id/languages"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <!-- here will dynamic load dictionaries -->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_section"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/languages"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/search_container"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/inputWord"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:background="@null"
+            android:ems="50"
+            android:hint="@string/type"
+            android:inputType="textCapCharacters|textNoSuggestions"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:textAllCaps="true"
+            android:textColor="@color/edittext_textColor"
+            android:textColorHint="@color/edittext_textColor"
+            android:textCursorDrawable="@null" />
+
+        <ImageButton
+            android:id="@+id/searchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:paddingRight="10dp"
+            android:src="@drawable/abc_ic_search" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/result_section"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignLeft="@+id/search_section"
+        android:layout_alignRight="@+id/search_section"
+        android:layout_below="@+id/search_section"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/result_container"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/report_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.bmpak.anagramsolver.ui.view.MyTextView
+                android:id="@+id/reportStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/found" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/reportStatus"
+                android:background="@color/found" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@+id/reportStatus"
+                android:background="@color/found" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/anagramsListView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="1px"
+            android:cacheColorHint="#00000000"
+            android:divider="@null" />
+    </LinearLayout>
+
+</RelativeLayout>

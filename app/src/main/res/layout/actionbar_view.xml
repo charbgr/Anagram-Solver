@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_actionbar_launcher" />
+
+    <com.bmpak.anagramsolver.ui.view.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/app_icon"
+        android:layout_alignBaseline="@+id/app_icon"
+        android:layout_marginTop="3dp"
+        android:text="@string/app_name"
+        android:textColor="@color/actiobar_text_color"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

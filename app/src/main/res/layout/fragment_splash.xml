@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.bmpak.anagramsolver.ui.SplashFragment">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/middle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_splash" />
+
+    <View
+        android:id="@+id/middle"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_centerVertical="true" />
+
+    <com.bmpak.anagramsolver.ui.view.MyTextView
+        android:id="@+id/select_languages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/middle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_languages"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+
+    <LinearLayout
+        android:id="@+id/languages_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_languages"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/gr_el_dict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/greece_flag" />
+
+        <ImageButton
+            android:id="@+id/en_dict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/english_flag" />
+
+        <ImageButton
+            android:id="@+id/fr_dict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/france_flag"/>
+
+        <ImageButton
+            android:id="@+id/ge_dict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/german_flag" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/install_languages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/install_languages"/>
+
+</RelativeLayout>

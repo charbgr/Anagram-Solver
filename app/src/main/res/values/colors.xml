@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="background">#ECF0F1</color>
+    <color name="result_container_background">#ffffff</color>
+    <!-- #E74C3C  -->
+    <color name="search_container_background">#e75846</color>
+    <color name="list_text">#778c8d</color>
+    <!-- C0392B -->
+    <color name="edittext_textColor">#99000000</color>
+
+    <color name="boxes_border_color">#BDC3C7</color>
+    <color name="action_bar_title_color">#778c8d</color>
+    <color name="found">#95A5A6</color>
+
+    <color name="actiobar_text_color">#34495e</color>
+
+</resources>
