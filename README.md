@@ -18,7 +18,15 @@ Come up with a word and let the app find all the possible anagrams.
 Browsing through random anagrams is a fun option!
 You can also use the app as a spelling dictionary.
 
-Language: English, Greek, French, German
+Languages:
+* English
+* Greek
+* French
+* German
+
+Contributing
+------------
+See CONTRIBUTING.md
 
 Big thanks to
 -------------
