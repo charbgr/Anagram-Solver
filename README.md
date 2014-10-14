@@ -26,7 +26,7 @@ Languages:
 
 Contributing
 ------------
-See CONTRIBUTING.md
+See [CONTRIBUTING.md](https://raw.githubusercontent.com/charbgr/Anagram-solver/master/CONTRIBUTING.md)
 
 Big thanks to
 -------------
