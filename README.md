@@ -1,7 +1,7 @@
 Anagram Solver
 ==============
 
-![logo](https://lh5.ggpht.com/byAWMNImKdqD5ar3YrywmgpV9DXEPuWRmG2q1mLIBBj_UEuUYOytEtRRDVfrsPonZdw=w300-rw "Anagram Solver")
+![logo](http://i.imgur.com/HIECsiR.png?1 "Anagram Solver")
 
 This GitHub repository hosts the code for the Android app [Anagram Solver](https://play.google.com/store/apps/details?id=com.bmpak.anagramsolver).
 
