@@ -54,7 +54,7 @@
             android:layout_gravity="center_vertical"
             android:background="@null"
             android:paddingRight="10dp"
-            android:src="@drawable/abc_ic_search" />
+            android:src="@drawable/abc_ic_search_api_mtrl_alpha" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,13 +99,19 @@
                 android:background="@color/found" />
         </RelativeLayout>
 
-        <ListView
-            android:id="@+id/anagramsListView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="1px"
-            android:cacheColorHint="#00000000"
-            android:divider="@null" />
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/anagramsListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1px"
+                android:cacheColorHint="#00000000"
+                android:divider="@null" />
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </RelativeLayout>

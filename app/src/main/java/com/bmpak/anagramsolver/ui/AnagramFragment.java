@@ -7,19 +7,21 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -60,6 +62,9 @@ public class AnagramFragment extends Fragment implements AnagramTextWatcher.OnWo
         actionbar.setCustomView(R.layout.actionbar_view);
     }
 
+    @InjectView(R.id.swipeContainer)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     @InjectView(R.id.languages)
     LinearLayout languages;
 
@@ -72,9 +77,16 @@ public class AnagramFragment extends Fragment implements AnagramTextWatcher.OnWo
     @InjectView(R.id.reportStatus)
     TextView reportStatus;
 
-
+    /**
+     * {@link com.bmpak.anagramsolver.utils.AnagramTextWatcher} instance.
+     */
     private AnagramTextWatcher anagramTextWatcher;
+
+    /* helper View for languages initialization */
     private View currentDict;
+
+    /* ListView's adapter */
+    private ArrayAdapter<String> wordListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,13 +110,14 @@ public class AnagramFragment extends Fragment implements AnagramTextWatcher.OnWo
         //initialize language section
         initLanguages(installedDictsArray);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        wordListAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.listview_item, R.id.list_content);
-        anagramsLV.setAdapter(adapter);
+        anagramsLV.setAdapter(wordListAdapter);
 
 
-        anagramTextWatcher = new AnagramTextWatcher(this, realm, adapter);
+        anagramTextWatcher = new AnagramTextWatcher(this, realm, wordListAdapter);
+        anagramTextWatcher.setSwipeRefreshLayout(mSwipeRefreshLayout);
 
         //set the first dictionary
         anagramTextWatcher.setDictionary(installedDictsArray[0]);
@@ -115,6 +128,38 @@ public class AnagramFragment extends Fragment implements AnagramTextWatcher.OnWo
         );
         inputWordET.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
+
+        //http://nlopez.io/swiperefreshlayout-with-listview-done-right/
+        anagramsLV.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                //nothing to do
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i2, int i3) {
+                int topRowVerticalPosition =
+                        (anagramsLV == null || anagramsLV.getChildCount() == 0) ?
+                                0 : anagramsLV.getChildAt(0).getTop();
+                mSwipeRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+            }
+        });
+
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                anagramTextWatcher.scrabble();
+                Toast.makeText(getActivity(), R.string.scrabbling, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mSwipeRefreshLayout.setColorSchemeColors(
+                R.color.grey_flag,
+                R.color.dark_blue_flag,
+                R.color.blue_flag,
+                R.color.red_flag
+        );
 
         return rootView;
     }
@@ -175,6 +220,7 @@ public class AnagramFragment extends Fragment implements AnagramTextWatcher.OnWo
     }
 
 
+
     @Override
     public void onWordsFound(int wordsCount) {
 
@@ -193,4 +239,6 @@ public class AnagramFragment extends Fragment implements AnagramTextWatcher.OnWo
             }
         }
     }
+
+
 }

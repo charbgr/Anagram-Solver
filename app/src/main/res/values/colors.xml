@@ -15,4 +15,9 @@
 
     <color name="actiobar_text_color">#34495e</color>
 
+    <color name="dark_blue_flag">#2c3e50</color>
+    <color name="blue_flag">#2980b9</color>
+    <color name="grey_flag">#ecf0f1</color>
+    <color name="red_flag">#c0392b</color>
+
 </resources>

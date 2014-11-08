@@ -6,6 +6,7 @@ package com.bmpak.anagramsolver.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -51,8 +52,14 @@ public class SplashFragment extends Fragment implements View.OnClickListener {
             throw new ClassCastException(activity.toString()
                     + " must implement OnHeadlineSelectedListener");
         }
+    }
 
-        ActionBar actionBar = ((MainActivity)activity).getSupportActionBar();
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+        ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
         actionBar.hide();
     }
 

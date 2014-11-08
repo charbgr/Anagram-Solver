@@ -2,15 +2,15 @@
 <resources>
 
     <string name="app_name">Anagram Solver</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="select_languages">Please select the languages you prefer:</string>
     <string name="install_languages">Install </string>
     <string name="error_select_one_language">Please select one of the languages</string>
-    <string name="type">Type a wodr...</string>
+    <string name="type">Type a word...</string>
     <string name="not_found">No words found</string>
     <string name="found">Found %1$d words</string>
     <string name="installing_process">Installing languages...Please wait...\n\nPerformance depends on your device.</string>
     <string name="install_finish">Install finished</string>
     <string name="ready_to_use_app">You are ready to use Anagram Solver</string>
+    <string name="scrabbling">Scrabbling...</string>
 </resources>
