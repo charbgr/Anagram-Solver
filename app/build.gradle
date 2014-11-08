@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 21
@@ -22,17 +21,26 @@ android {
         }
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets'] } }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
     //Android
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.android.support:support-v4:21.0.0'
 
-    //Realm
-    apt fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':realm')
-
     //ButterKnife
     compile 'com.jakewharton:butterknife:5.1.2'
+
+    //Realm
+    //apt fileTree(dir: 'libs', include: ['*.jar'])
+    //compile project(':realm')
+    compile 'io.realm:realm-android:0.73.1'
+
+
 }

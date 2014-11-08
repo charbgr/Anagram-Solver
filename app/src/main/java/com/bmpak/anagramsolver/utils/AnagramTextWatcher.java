@@ -188,6 +188,9 @@ public class AnagramTextWatcher implements TextWatcher, OnDictionaryChangeListen
                         mSwipeRefreshLayout.setRefreshing(false);
                 }
             }.execute();
+        }else{
+            if (mSwipeRefreshLayout != null)
+                mSwipeRefreshLayout.setRefreshing(false);
         }
     }
 
