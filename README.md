@@ -1,8 +1,7 @@
 Anagram Solver
 ==============
 
-![logo](
-https://raw.githubusercontent.com/charbgr/Anagram-Solver/master/app/src/main/res/drawable-xxhdpi/ic_launcher.png "Anagram Solver")
+![logo](http://i.imgur.com/HIECsiR.png?1 "Anagram Solver")
 
 This GitHub repository hosts the code for the Android app [Anagram Solver](https://play.google.com/store/apps/details?id=com.bmpak.anagramsolver).
 
@@ -26,7 +25,7 @@ Languages:
 
 Contributing
 ------------
-See CONTRIBUTING.md
+See [CONTRIBUTING.md](https://github.com/charbgr/Anagram-Solver/blob/master/CONTRIBUTING.md)
 
 Big thanks to
 -------------
