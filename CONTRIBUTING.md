@@ -14,7 +14,7 @@ Contributing
 * You can translate strings.
 
 Branch structure
-----------------S
+----------------
 
 The repository is made up of two main branches: master (stable) and dev (unstable).
 
