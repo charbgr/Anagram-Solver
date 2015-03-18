@@ -1,79 +1,353 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<title>Anagram Solver</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="css/style.css" rel="stylesheet" media="screen">
+	<link href="css/animate.css" rel="stylesheet" media="screen">
+	<link href="css/ionicons.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="css/nivo-lightbox.css" type="text/css" />
+	<link rel="stylesheet" href="css/nivo-themes/default/default.css" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:300italic' rel='stylesheet' type='text/css'>
+	
+</head>
+<body>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Anagram-solver : Android - An awesome and instantaneous Anagram Solver">
+	<!--HEADER-->
+	<header id='header'>
+		<div id='menu-bar' class='animated fadeIn'>
+			<div class='container'>
+				<div class='logo'>
+					<img src="img/logo.png" alt>
+				</div>
+				<nav  id="nav" class='nav'>
+					<ul class='nav-inner'>
+						<li class='current'><a href="#header">Home</a></li>
+						<li><a href="#features">Features</a></li>
+						<li><a href="#detailed">Details</a></li>
+						<li><a href="#contribute-banner">Contribute</a></li>
+						<li><a href="#download">Download</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class='row'>					
+				<div class='col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-0 col-md-push-5 col-lg-6 col-lg-push-6 animated fadeInRight'>
+					<h1>Find any anagrams for any given word!</h1>
+					<div id='header-btn'>
+						<a class='btn btn-secondary scrollTo-features'>Learn More</a>
+						<a class='btn btn-primary scrollTo-download'>Download Now</a>
+					</div>
+				</div>
+				<div class='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-0 col-md-pull-7 col-lg-5 col-lg-pull-6 col-lg-offset-1'>
+					<img src="img/app_header.png" id='header-img' class='img-responsive animated fadeInUp' alt>
+				</div>
+			</div>
+		</div>
+		
+		<div id='menu-bar-fixed'>
+			<div class='container'>
+				<a class='logo scrollTo-header'><img src="img/logo-sm.png" alt></a>
+				<nav  id="nav-fixed" class='nav'>
+					<a id="show-nav" title="Show navigation"><div></div></a>
+    				<a id="hide-nav" title="Hide navigation"><div></div></a>
+					<ul id='nav-ul' class='nav-inner'>
+						<li><a href="#header">Home</a></li>
+						<li class='current'><a href="#features">Features</a></li>
+						<li><a href="#detailed">Details</a></li>
+						<li><a href="#contribute-banner">Contribute</a></li>
+						<li><a href="#download">Download</a></li>
+						<li id='off-nav'></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	<!--FEATURES-->
+	<section id='features'>
+		<div class="container">
+			<div class='wow fadeInDown'>
+				<h2>Features</h2>
+				<p class='subtitle'>Simplest anagram solver without unnecessary complexities</p>
+			</div>
+			<div class='row'>	
+				<div class='col-sm-4 col-md-4 col-lg-4 left wow fadeInLeft'>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Unique Design</h4>
+							<p>Simplest anagram solver without unnecessary UI complexities</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Scrabble</h4>
+							<p>You can use the app as a helper for Scrabble just by swiping down the list! Browsing through random anagrams is a fun option!</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Lightning Fast</h4>
+							<p>The anagrams are instantaneous and there is no doubt that it is the fastest Anagram Solver ever.<br>Thanks to Realm!</p>
+						</div>
+					</div>
+				</div>
+				<div class='col-sm-4 col-sm-push-4 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 right wow fadeInRight'>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Languages</h4>
+							<p>English, Greek, French, German are supported.</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>You're going to love it</h4>
+							<p>30.000+ downloads with most of users be satified with it's simplicity.</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Open Source</h4>
+							<p>You can download the source code and contribute.</p>
+						</div>
+					</div>
+				</div>
+				<div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 col-sm-pull-4 col-md-4 col-md-pull-4 col-lg-4 col-lg-pull-4'>
+					<img src="img/app_features_section.png" class='img-responsive wow fadeInUp' alt>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <title>Anagram-solver</title>
-  </head>
+	<!--DETAILED INFO-->
+	<section id='detailed'>
+		<div class="container">
+			<div class='row'>
+				<div class='col-sm-12 col-md-7 col-lg-7 wow fadeInLeft'>
+					<h2>More Info</h2>
+					<p class='subtitle'>" Those who know nothing of foreign languages know nothing of their own. "<br>- Goethe</p>
+				</div>
+				<div class='col-sm-6 col-md-6 col-lg-6 wow fadeInLeft'>
+					<div class='row'>
+						<div class='col-sm-10 col-md-10 col-lg-10'>
+							<h4>What is an anagram?</h4>
+							<p>A word or phrase formed by reordering the letters of another word or phrase, such as garden to danger.. One word anagrams (where a single word is anagrammed into another single word) are sometimes referred to by wordplay specialists as transpositions.</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-10 col-md-10 col-lg-10'>
+							<h4>Languages + Contribute</h4>
+							<p>The Anagram Solver supports 4 languages:<br> English, Greek, French, German.<br> You can always contribute to the project and add your language! Just look at the GitHub repo.</p>
+						</div>
+					</div>
+				</div>
+				<div class='col-sm-6 col-md-6 col-lg-6 img wow fadeInRight delay-sm'>
+					<img src="img/tablet_phone.png" class='img-responsive' alt>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <body>
+<!--BANNER-DOWNLOAD-->
+	<section id='contribute-banner'>
+		<div class="container">
+			<p>
+				<span class='text wow fadeInLeft'>
+					<span class='bold'>Want to contribute?</span><span class='normal'> Checkout the repo</span>
+				</span>
+				<a class='btn btn-primary scrollTo-download wow pulse delay-1s' href="https://github.com/charbgr/Anagram-Solver">Contribute</a>
+			</p>
+		</div>
+	</section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/charbgr/Anagram-Solver">View on GitHub</a>
 
-          <h1 id="project_title">Anagram-solver</h1>
-          <h2 id="project_tagline">Android - An awesome and instantaneous Anagram Solver</h2>
+	<!--DOWNLOAD-->
+	<section id='download'>
+		<div class="container">
+			<div class='wow fadeInDown'>
+				<h2>Download the app</h2>
+				<p class='subtitle'>Thank you for downloading the app. Don't forget to rate it, if you like  it!</p>
+			</div>
+			<p class='download-buttons'>
+				<a class='btn btn-icon btn-primary' href="https://play.google.com/store/apps/details?id=com.bmpak.anagramsolver"><span class='icon ion-social-android'></span>Play Store</a>
+			</p>
+			<div class='floating-phone wow fadeInRightBig'></div>
+		</div>
+	</section>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/charbgr/Anagram-Solver/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/charbgr/Anagram-Solver/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript" src="js/retina.min.js"></script>
+	<script src="js/wow.js"></script>
+	<script src="js/jquery.nav.js"></script>
+	<script src="js/jquery.scrollTo.min.js"></script>
+	<script src="js/nivo-lightbox.min.js"></script>
+	<script type="text/javascript">
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+		// set header height
+		if ($( window ).height()>=900) {
+			$('#header').css('height', $( window ).height() - 250)
+		}
+		else{
+			$('#header').css('height', $( window ).height())
+		}
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+		$(document).ready(function() {
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+			// header animation svg
+			var headerHeight = $('#header').outerHeight()
+			var headerWidth = $('#header').outerWidth()
+			$('#svg-rect').attr('height', 1.5*headerHeight)
+			$('#svg-rect').attr('width', 2*headerWidth)
+			$('#svg-header').css('transform', 'rotate(-55deg)')
+			$('#svg-header').css('-webkit-transform', 'rotate(-55deg)')
+			$('#svg-header').css('ms-transform', 'rotate(-55deg)')
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+			// wow.js initialization
+			if ($( window ).width()>530) {
+				new WOW().init();
+			};
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+			// jquery.nav.js initialization
+			$('.nav-inner').onePageNav();
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+			// Nivo Lightbox initialization
+			$('#screenshots a').nivoLightbox({
+				effect: 'fadeScale',
+				keyboardNav: true,
+			});
 
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+			// owl.carousel.js initialization
+			$("#screens-carousel").owlCarousel({
+				items : 4,
+				itemsDesktop : [1199,4],
+				itemsDesktopSmall : [980,3],
+				itemsTablet: [768,2],
+				itemsMobile : [480,1],
+			});
+			$("#reviews-carousel").owlCarousel({
+				items : 1,
+				itemsDesktop : [1199,1],
+				itemsDesktopSmall : [980,1],
+				itemsTablet: [768,1],
+				itemsMobile : [480,1],
+				autoPlay: 8000,
+			});
+		});
+		// Responsive navigation show/hide
+		function showNav() {
+			$('#nav-ul').css('display','block')
+			$('#hide-nav').css('display','block')
+			$('#show-nav').css('display','none')
+		}
+		function hideNav() {
+			$('#nav-ul').css('display','none')
+			$('#show-nav').css('display','block')
+			$('#hide-nav').css('display','none')
+		}
+		$( "#show-nav" ).click(function() {
+			showNav();
+		});
+		$( "#hide-nav" ).click(function() {
+			hideNav();
+		});
+		$( "#off-nav" ).click(function() {
+			hideNav();
+		});
+		$( "#nav-ul > li" ).click(function() {
+			if ($( window ).width()<=767) {
+				hideNav();
+			};
+		});
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+		// Demo switcher
+		$( "#demo-switcher .demo-icon" ).click(function() {
+			if($('#demo-switcher').hasClass("active")){
+				$('#demo-switcher').animate({"left":"-140px"},function(){
+					$('#demo-switcher').toggleClass("active");
+				});						
+			}
+			else{
+				$('#demo-switcher').animate({"left":"0px"},function(){
+				$('#demo-switcher').toggleClass("active");
+			});			
+		} 
+		});
+		
+		// Resize event handler
+		$( window ).resize(function() {
+			// show/hide responsive navigation
+			if ($( window ).width()>767) {
+				$('#nav-ul').css('display','block')
+			}
+			else{
+				$('#nav-ul').css('display','none')
+			}
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+			// resize SVG rectangle in header
+			var headerHeight = $('#header').outerHeight()
+			var headerWidth = $('#header').outerWidth()
+			$('#svg-rect').attr('height', 1.5*headerHeight)
+			$('#svg-rect').attr('width', 2*headerWidth)
+		});
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+		// scrollTo buttons
+		menuBarHeight = $('#menu-bar-fixed').outerHeight();
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+		$('.scrollTo-download').click(function(){
+			$.scrollTo( $('#download').offset().top-menuBarHeight+'px' , 800 );
+		});
+		$('.scrollTo-about').click(function(){
+			$.scrollTo( $('#about').offset().top-menuBarHeight+'px' , 800 );
+		});
+		$('.scrollTo-header').click(function(){
+			$.scrollTo( $('#header') , 800 );
+		});
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Anagram-solver maintained by <a href="https://github.com/charbgr">charbgr</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+		var footerHeight = $('footer').outerHeight();
+		$('#static-footer').css('margin-top', footerHeight+'px');
 
-    
+		// scroll event
+		window.onscroll = scroll;
+		
+		function scroll () {
 
-  </body>
+			var wScrollTop = $(window).scrollTop();
+			var wScrollBot = wScrollTop + $(window).height();
+			var pageHeight = $(document).height();
+			var footerHeight = $('footer').outerHeight();
+
+			// fixed footer opacity change onscroll
+			if(wScrollBot>pageHeight-(footerHeight/2)){
+				var newOpacity = (0.99/(footerHeight/2)) * (wScrollBot-(pageHeight-(footerHeight/2)))
+				$("#footer-content").css('opacity', newOpacity);
+			}
+			else{
+				$("#footer-content").css('opacity','0');
+			}
+			
+			// fixed navigation show/hide
+			if (wScrollTop >= $('#header').outerHeight()-$('#menu-bar-fixed').outerHeight()) {
+				$('#menu-bar-fixed').css('top','0');
+				$('#menu-bar-fixed').css('opacity','1');
+			}
+			else{
+				$('#menu-bar-fixed').css('top',-$('#menu-bar-fixed').outerHeight()+'px');
+				$('#menu-bar-fixed').css('opacity','0');
+			};
+		}
+
+
+
+
+
+	</script>
+
+</body>
 </html>
