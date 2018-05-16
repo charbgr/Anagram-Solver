@@ -1,0 +1,34 @@
+ext {
+  // Build stuff
+  build_tools_version = "27.0.3"
+  compile_sdk_version = 'android-P'
+  target_sdk_version = 28
+  min_sdk_version = 21
+  version_code = 20
+  version_name = "2.1"
+
+  // Libs
+  appcompat_version = '1.0.0-alpha1'
+  material_version = '1.0.0-alpha1'
+  kotlin_version = '1.2.41'
+  support_version = '27.1.1'
+  constraintlayout_version = '1.1.0'
+
+  // test
+  truth_version = '0.40'
+  junit_version = '4.12'
+
+  deps = [
+    android : [
+      appCompat : "androidx.appcompat:appcompat:$appcompat_version",
+      constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
+      material : "com.google.android.material:material:$material_version"
+    ],
+    kotlin : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  ]
+
+  test = [
+    truth: "com.google.truth:truth:$truth_version",
+    junit: "junit:junit:$junit_version"
+  ]
+}
