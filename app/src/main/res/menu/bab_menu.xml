@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+      android:id="@+id/about"
+      android:icon="@drawable/ic_info_white"
+      android:title="@string/bab_action_about"/>
+
+</menu>

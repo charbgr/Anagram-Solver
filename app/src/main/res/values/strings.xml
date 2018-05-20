@@ -1,3 +1,5 @@
 <resources>
-  <string name="app_name">AnagramSolver</string>
+  <string name="app_name">Anagram Solver</string>
+  <string name="bab_action_about">About me</string>
+  <string name="search_anagram_hint">Search</string>
 </resources>

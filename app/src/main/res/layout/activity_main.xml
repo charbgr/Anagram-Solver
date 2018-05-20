@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,13 +8,79 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+  <include
+      layout="@layout/include_app_toolbar"
+      android:id="@+id/include"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+  <EditText
+      android:id="@+id/searchbar"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_gravity="center"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:gravity="center"
+      android:hint="@string/search_anagram_hint"
+      android:inputType="text|textNoSuggestions|textVisiblePassword"
+      app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+      app:layout_constraintStart_toStartOf="@+id/left_guideline"
+      app:layout_constraintTop_toBottomOf="@+id/include"
+      style="@style/Text.Search"/>
+
+  <com.google.android.material.card.MaterialCardView
+      android:id="@+id/materialCardView"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginBottom="8dp"
+      android:layout_marginTop="12dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+      app:layout_constraintStart_toStartOf="@+id/left_guideline"
+      app:layout_constraintTop_toBottomOf="@+id/searchbar"
+      style="@style/AppTheme.CardView"/>
+
   <TextView
+      android:id="@+id/results_found_words_title"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:fontFamily="@font/google_sans_regular"
+      android:gravity="center"
+      android:textColor="@color/chambray"
+      android:translationZ="@dimen/found_words_elevation"
+      app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="@+id/left_guideline"
+      app:layout_constraintTop_toTopOf="@+id/materialCardView"
+      tools:text="Found 4 words"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/results_found_words_list"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginTop="8dp"
+      android:translationZ="@dimen/found_words_elevation"
+      app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
+      app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+      app:layout_constraintStart_toStartOf="@+id/left_guideline"
+      app:layout_constraintTop_toBottomOf="@+id/results_found_words_title"/>
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/left_guideline"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"/>
+      android:orientation="vertical"
+      app:layout_constraintGuide_begin="24dp"/>
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/right_guideline"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_end="24dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

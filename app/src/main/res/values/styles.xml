@@ -1,11 +1,59 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="android:windowBackground">@color/white</item>
+    <item name="android:textColorTertiary">@color/text_color_tertiary</item>
+    <item name="android:statusBarColor">@color/status_bar</item>
+    <item name="android:navigationBarColor">@color/dark</item>
+    <item name="colorAccent">@color/dark</item>
+    <item name="colorPrimary">@color/dark</item>
+    <item name="android:windowLightStatusBar">true</item>
+  </style>
+
+  <style name="Text" parent="Theme.MaterialComponents.Light">
+    <item name="android:textSize">14sp</item>
+    <item name="android:textAllCaps">false</item>
+    <item name="android:fontFamily">@font/google_sans_regular</item>
+  </style>
+
+  <style name="Text.ToolbarTitle">
+    <item name="android:textSize">20sp</item>
+    <item name="android:fontFamily">@font/google_sans_regular</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="Text.Search" parent="Widget.AppCompat.EditText">
+    <item name="android:textSize">18sp</item>
+    <item name="android:fontFamily">@font/google_sans_regular</item>
+    <item name="android:gravity">center</item>
+    <item name="colorControlNormal">@color/dark_transparent</item>
+    <item name="colorControlActivated">@color/white</item>
+    <item name="android:textColor">@color/search_text_color</item>
+    <item name="android:background">@null</item>
+  </style>
+
+  <style name="AppTheme.CardView">
+    <item name="cardCornerRadius">8dp</item>
+    <item name="cardBackgroundColor">@color/card_bg_color</item>
+    <item name="cardElevation">@dimen/card_elevation</item>
+  </style>
+
+  <style name="AppTheme.BottomAppBar">
+    <item name="backgroundTint">@android:color/white</item>
+    <item name="fabAttached">true</item>
+    <item name="fabCradleDiameter">@dimen/bottomappbar_fab_cradle_diameter</item>
+    <item name="fabCradleRoundedCornerRadius">@dimen/bottomappbar_fab_cradle_rounded_corner_radius</item>
+    <item name="fabCradleVerticalOffset">@dimen/bottomappbar_fab_cradle_vertical_offset</item>
+  </style>
+
+  <style name="AppTheme.FloatingActionButton">
+    <item name="elevation">@dimen/fab_elevation</item>
+    <!--<item name="hideMotionSpec">@animator/fab_hide_motion_spec</item>-->
+    <item name="hoveredFocusedTranslationZ">@dimen/fab_translation_z_hovered_focused</item>
+    <item name="pressedTranslationZ">@dimen/fab_translation_z_pressed</item>
+    <!--<item name="rippleColor">@color/fab_ripple_color</item>-->
+    <!--<item name="showMotionSpec">@animator/fab_show_motion_spec</item>-->
   </style>
 
 </resources>

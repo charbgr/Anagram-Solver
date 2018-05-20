@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="card_elevation">2dp</dimen>
+  <dimen name="found_words_elevation">2dp</dimen>
+
+  <dimen name="bottomappbar_fab_cradle_diameter">64dp</dimen>
+  <dimen name="bottomappbar_fab_cradle_rounded_corner_radius">8dp</dimen>
+  <dimen name="bottomappbar_fab_cradle_vertical_offset">0dp</dimen>
+
+
+  <dimen name="fab_elevation">6dp</dimen>
+  <dimen name="fab_translation_z_hovered_focused">2dp</dimen>
+  <dimen name="fab_translation_z_pressed">6dp</dimen>
+
+  <dimen name="anagram_item_title_min_height">21dp</dimen>
+
+  <dimen name="small_font_size">14sp</dimen>
+
+</resources>

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
+  <!-- Palette -->
+  <color name="white">#fff</color>
+  <color name="text_color_tertiary">#dadce0</color>
+  <color name="status_bar">#ffffff</color>
+  <color name="dark">#202124</color>
+  <color name="dark_transparent">#e5202124</color>
+  <color name="colorPrimary">#4285f4</color>
+  <color name="orange">#ff6c00</color>
+  <color name="teal">#31e7b6</color>
+  <color name="yellow">#fcd230</color>
+  <color name="red">#f4511e</color>
+  <color name="chambray">#3b5998</color>
+
+  <!-- Widgets -->
+  <color name="card_bg_color">@color/white</color>
+  <color name="search_text_color">@color/colorPrimary</color>
 </resources>
