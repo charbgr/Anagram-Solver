@@ -11,8 +11,13 @@ ext {
   appcompat_version = '1.0.0-alpha1'
   material_version = '1.0.0-alpha1'
   kotlin_version = '1.2.41'
+  kotlin_coroutines_version = '0.22.1'
   support_version = '27.1.1'
   constraintlayout_version = '1.1.0'
+  firebase_core_version = '16.0.0'
+  firebase_database_version = '16.0.1'
+  firebase_performance_version = '16.0.0'
+  timber_version = '4.7.0'
 
   // test
   truth_version = '0.40'
@@ -24,7 +29,19 @@ ext {
       constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
       material : "com.google.android.material:material:$material_version"
     ],
-    kotlin : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    firebase : [
+        core : "com.google.firebase:firebase-core:$firebase_core_version",
+        database : "com.google.firebase:firebase-database:$firebase_database_version",
+        performance: "com.google.firebase:firebase-perf:$firebase_performance_version"
+    ],
+    kotlin : [
+        core : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+        coroutines: [
+            core: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
+            android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+        ]
+    ],
+    timber: "com.jakewharton.timber:timber:$timber_version"
   ]
 
   test = [

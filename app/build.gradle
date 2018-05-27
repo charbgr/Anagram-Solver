@@ -21,14 +21,25 @@ android {
     }
 }
 
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlin
+    implementation deps.kotlin.core
+    implementation deps.kotlin.coroutines.core
+    implementation deps.kotlin.coroutines.android
 
     implementation deps.android.appCompat
     implementation deps.android.constraintLayout
     implementation deps.android.material
 
+    implementation deps.timber
+
     testImplementation test.junit
     testImplementation test.truth
 }
+

@@ -2,4 +2,11 @@
   <string name="app_name">Anagram Solver</string>
   <string name="bab_action_about">About me</string>
   <string name="search_anagram_hint">Search</string>
+
+  <string name="no_words_found">No words found</string>
+
+  <plurals name="words_found">
+    <item quantity="one">1 word found</item>
+    <item quantity="other">%1$d words found</item>
+  </plurals>
 </resources>

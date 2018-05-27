@@ -4,34 +4,41 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bmpak.anagramsolver.ui.search.adapter.ActualAnagramItem
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
+import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
+import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
+import com.bmpak.anagramsolver.ui.search.arch.SearchView
+import com.bmpak.anagramsolver.ui.search.arch.SearchViewModel
+import com.bmpak.anagramsolver.ui.search.arch.repository.MockAnagramRepository
+import com.bmpak.anagramsolver.utils.SimpleTextWatcher
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
+import kotlin.properties.Delegates
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView {
 
   private lateinit var searchBar: EditText
   private lateinit var resultsTitle: TextView
   private lateinit var resultsList: RecyclerView
   private val resultsAdapter: AnagramAdapter = AnagramAdapter()
 
+  private var presenter: SearchPresenter by Delegates.notNull()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+
     findViews()
     setUpSearchBar()
     setUpSearchList()
+    setUpPresenter()
+  }
 
-    resultsTitle.setOnLongClickListener {
-      resultsTitle.text = "No words found"
-      resultsTitle.setTextColor(ContextCompat.getColor(this, R.color.red))
-      true
-    }
+  override fun onStop() {
+    presenter.destroy()
+    super.onStop()
   }
 
   private fun findViews() {
@@ -42,17 +49,28 @@ class MainActivity : AppCompatActivity() {
 
   private fun setUpSearchBar() {
     searchBar.disableNumberAndSpaceInput()
+
+    searchBar.addTextChangedListener(object : SimpleTextWatcher() {
+      override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
+        presenter.search(text)
+      }
+    })
   }
 
   private fun setUpSearchList() {
     val layoutManager = LinearLayoutManager(this)
     resultsList.layoutManager = layoutManager
     resultsList.adapter = resultsAdapter
+  }
 
-    for (i in 0..50) {
-      resultsAdapter.addItems(listOf(ActualAnagramItem("Anagram #$i")))
-    }
+  private fun setUpPresenter() {
+    presenter = SearchPresenter(SearchUseCase(MockAnagramRepository))
+    presenter.init(this)
+  }
 
-    resultsTitle.text = "Found 50 words"
+  override fun bind(viewModel: SearchViewModel) {
+    resultsTitle.text = viewModel.resultTitle(this)
+    resultsTitle.setTextColor(viewModel.resultTitleColor(this))
+    resultsAdapter.setItems(viewModel.anagramItems)
   }
 }
