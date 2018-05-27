@@ -1,4 +1,4 @@
-package com.bmpak.anagramsolver.adapter
+package com.bmpak.anagramsolver.ui.search.adapter
 
 import com.bmpak.anagramsolver.R
 

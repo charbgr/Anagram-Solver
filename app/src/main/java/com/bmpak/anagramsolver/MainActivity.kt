@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bmpak.anagramsolver.adapter.ActualAnagramItem
-import com.bmpak.anagramsolver.adapter.AnagramAdapter
+import com.bmpak.anagramsolver.ui.search.adapter.ActualAnagramItem
+import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
 
 

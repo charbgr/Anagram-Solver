@@ -1,4 +1,4 @@
-package com.bmpak.anagramsolver.adapter
+package com.bmpak.anagramsolver.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bmpak.anagramsolver.R
-import com.bmpak.anagramsolver.adapter.AnagramAdapter.BaseViewHolder
+import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter.BaseViewHolder
 
 class AnagramAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
