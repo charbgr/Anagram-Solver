@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "544026560572",
+    "firebase_url": "https://anagram-solver-dev.firebaseio.com",
+    "project_id": "anagram-solver-dev",
+    "storage_bucket": "anagram-solver-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544026560572:android:ceb6daa8e9fcbe4a",
+        "android_client_info": {
+          "package_name": "com.bmpak.anagramsolver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544026560572-3jrlh3uvngmd8puhdskcbm92oq33jujl.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "544026560572-3jrlh3uvngmd8puhdskcbm92oq33jujl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuqIso3vRGpoSSjI7nxzFCW8jMVp0oBW8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

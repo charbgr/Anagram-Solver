@@ -37,9 +37,13 @@ dependencies {
     implementation deps.android.constraintLayout
     implementation deps.android.material
 
+    implementation deps.firebase.core
+    implementation deps.firebase.database
+
     implementation deps.timber
 
     testImplementation test.junit
     testImplementation test.truth
 }
 
+apply plugin: 'com.google.gms.google-services'

@@ -11,7 +11,7 @@ import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
 import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.arch.SearchView
 import com.bmpak.anagramsolver.ui.search.arch.SearchViewModel
-import com.bmpak.anagramsolver.ui.search.arch.repository.MockAnagramRepository
+import com.bmpak.anagramsolver.ui.search.arch.repository.FirebaseRepository
 import com.bmpak.anagramsolver.utils.SimpleTextWatcher
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
 import kotlin.properties.Delegates
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity(), SearchView {
   }
 
   private fun setUpPresenter() {
-    presenter = SearchPresenter(SearchUseCase(MockAnagramRepository))
+    presenter = SearchPresenter(SearchUseCase(FirebaseRepository))
     presenter.init(this)
   }
 
