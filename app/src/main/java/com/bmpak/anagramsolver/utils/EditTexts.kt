@@ -18,13 +18,14 @@ fun EditText.disableNumberAndSpaceInput() {
   this.filters = arrayOf(numberInputFiler)
 }
 
-open class SimpleTextWatcher: TextWatcher {
-  override fun afterTextChanged(editable: Editable) {
+internal inline fun EditText.onTextChanged(
+    crossinline func: (text: CharSequence) -> Unit
+): TextWatcher {
+  val watcher = object : TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+    override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) = func(text)
+    override fun afterTextChanged(s: Editable?) = Unit
   }
-
-  override fun beforeTextChanged(text: CharSequence, start: Int, count: Int, after: Int) {
-  }
-
-  override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
-  }
+  addTextChangedListener(watcher)
+  return watcher
 }

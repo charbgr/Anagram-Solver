@@ -12,8 +12,8 @@ import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.arch.SearchView
 import com.bmpak.anagramsolver.ui.search.arch.SearchViewModel
 import com.bmpak.anagramsolver.ui.search.arch.repository.FirebaseRepository
-import com.bmpak.anagramsolver.utils.SimpleTextWatcher
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
+import com.bmpak.anagramsolver.utils.onTextChanged
 import kotlin.properties.Delegates
 
 
@@ -49,12 +49,9 @@ class MainActivity : AppCompatActivity(), SearchView {
 
   private fun setUpSearchBar() {
     searchBar.disableNumberAndSpaceInput()
-
-    searchBar.addTextChangedListener(object : SimpleTextWatcher() {
-      override fun onTextChanged(text: CharSequence, start: Int, before: Int, count: Int) {
-        presenter.search(text)
-      }
-    })
+    searchBar.onTextChanged {
+      presenter.search(it)
+    }
   }
 
   private fun setUpSearchList() {
