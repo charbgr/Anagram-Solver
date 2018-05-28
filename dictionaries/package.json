@@ -1,0 +1,12 @@
+{
+  "name": "proccess",
+  "version": "0.1.0",
+  "description": "Processes dictionaries",
+  "repository": "https://github.com/charbgr/Anagram-Solver",
+  "main": "process.js",
+  "author": "Vasilis Charalampakis",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "inquirer": "^3.0.6"
+  }
+}
