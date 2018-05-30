@@ -17,6 +17,7 @@ ext {
   firebase_core_version = '16.0.0'
   firebase_database_version = '16.0.1'
   firebase_performance_version = '16.0.0'
+  workmanager_version = '1.0.0-alpha01'
   timber_version = '4.7.0'
 
   // test
@@ -27,7 +28,10 @@ ext {
     android : [
       appCompat : "androidx.appcompat:appcompat:$appcompat_version",
       constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
-      material : "com.google.android.material:material:$material_version"
+      material : "com.google.android.material:material:$material_version",
+        arch : [
+          workmanager: "android.arch.work:work-runtime:$workmanager_version"
+        ]
     ],
     firebase : [
         core : "com.google.firebase:firebase-core:$firebase_core_version",
