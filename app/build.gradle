@@ -36,7 +36,6 @@ dependencies {
     implementation deps.android.appCompat
     implementation deps.android.constraintLayout
     implementation deps.android.material
-    implementation deps.android.arch.workmanager
 
     implementation deps.firebase.core
     implementation deps.firebase.database
