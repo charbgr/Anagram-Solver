@@ -56,4 +56,9 @@
     <!--<item name="showMotionSpec">@animator/fab_show_motion_spec</item>-->
   </style>
 
+  <style name="AppTheme.Onboarding">
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowTranslucentStatus">true</item>
+  </style>
+
 </resources>
