@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bmpak.anagramsolver.framework.navigator.RealNavigator
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
 import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity(), SearchView {
     setUpSearchBar()
     setUpSearchList()
     setUpPresenter()
+
+    RealNavigator(this).toOnboarding()
   }
 
   override fun onStop() {
