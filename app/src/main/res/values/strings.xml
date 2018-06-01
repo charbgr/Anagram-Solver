@@ -9,4 +9,9 @@
     <item quantity="one">1 word found</item>
     <item quantity="other">%1$d words found</item>
   </plurals>
+
+  <string name="tooltip_greece">Greece</string>
+  <string name="tooltip_english">English</string>
+  <string name="tooltip_german">German</string>
+  <string name="tooltip_france">France</string>
 </resources>

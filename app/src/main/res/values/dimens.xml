@@ -7,13 +7,15 @@
   <dimen name="bottomappbar_fab_cradle_rounded_corner_radius">8dp</dimen>
   <dimen name="bottomappbar_fab_cradle_vertical_offset">0dp</dimen>
 
-
   <dimen name="fab_elevation">6dp</dimen>
   <dimen name="fab_translation_z_hovered_focused">2dp</dimen>
   <dimen name="fab_translation_z_pressed">6dp</dimen>
 
-  <dimen name="anagram_item_title_min_height">21dp</dimen>
-
   <dimen name="small_font_size">14sp</dimen>
+  <dimen name="large_font_size">26sp</dimen>
+
+  <dimen name="anagram_item_title_min_height">21dp</dimen>
+  <dimen name="dictionary_large_wh">50dp</dimen>
+  <dimen name="dictionary_mini_wh">20dp</dimen>
 
 </resources>

@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/onboarding_screen_frame"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ad_onboarding">
+    android:background="@drawable/ad_onboarding"
+    android:orientation="vertical">
 
-</LinearLayout>
+  <com.bmpak.anagramsolver.ui.onboarding.TextFlipper
+      android:id="@+id/onboarding_title"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:text="@string/onboarding_welcome"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:background="@color/dark"
+      tools:layout_height="60dp"/>
+
+  <TextView
+      android:id="@+id/pick_language_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:text="@string/onboarding_pick_languages"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.08"
+      style="@style/Text.Onboarding"/>
+
+  <ImageView
+      android:id="@+id/english"
+      android:layout_width="@dimen/dictionary_large_wh"
+      android:layout_height="@dimen/dictionary_large_wh"
+      android:layout_marginBottom="8dp"
+      android:layout_marginTop="8dp"
+      android:src="@drawable/english_flag"
+      android:tooltipText="@string/tooltip_english"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/greek"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+  <ImageView
+      android:id="@+id/greek"
+      android:layout_width="@dimen/dictionary_large_wh"
+      android:layout_height="@dimen/dictionary_large_wh"
+      android:src="@drawable/greece_flag"
+      android:tooltipText="@string/tooltip_greece"
+      app:layout_constraintEnd_toStartOf="@+id/french"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/english"
+      app:layout_constraintTop_toTopOf="@+id/english"/>
+
+  <ImageView
+      android:id="@+id/german"
+      android:layout_width="@dimen/dictionary_large_wh"
+      android:layout_height="@dimen/dictionary_large_wh"
+      android:src="@drawable/german_flag"
+      android:tooltipText="@string/tooltip_german"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/french"
+      app:layout_constraintTop_toTopOf="@+id/english"/>
+
+  <ImageView
+      android:id="@+id/french"
+      android:layout_width="@dimen/dictionary_large_wh"
+      android:layout_height="@dimen/dictionary_large_wh"
+      android:src="@drawable/france_flag"
+      android:tooltipText="@string/tooltip_france"
+      app:layout_constraintEnd_toStartOf="@+id/german"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/greek"
+      app:layout_constraintTop_toTopOf="@+id/english"/>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/onboarding_install_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:enabled="false"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      app:icon="@drawable/ic_arrow_forward"
+      app:iconTint="@color/dark"
+      android:backgroundTint="@color/white"
+      android:text="@string/onboarding_install_step"
+      android:textColor="@color/dark"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/english"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

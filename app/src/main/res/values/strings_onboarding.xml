@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="onboarding_welcome">Welcome!</string>
+  <string name="onboarding_lets_you_find">Anagram Solver\nlets you find</string>
+  <string name="onboarding_any_anagram">any anagram you want!</string>
+  <string name="onboarding_first_step">First</string>
+  <string name="onboarding_get_to_know">we want to get to pick languages</string>
+  <string name="onboarding_pick_languages">Pick languages</string>
+  <string name="onboarding_install_step">Install</string>
+</resources>
