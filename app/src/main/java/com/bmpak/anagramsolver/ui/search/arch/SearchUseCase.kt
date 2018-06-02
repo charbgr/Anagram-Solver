@@ -1,7 +1,7 @@
 package com.bmpak.anagramsolver.ui.search.arch
 
 import com.bmpak.anagramsolver.framework.arch.UseCase
-import com.bmpak.anagramsolver.ui.search.arch.repository.AnagramRepository
+import com.bmpak.anagramsolver.framework.repository.anagram.AnagramRepository
 import com.bmpak.anagramsolver.utils.Either
 
 class SearchUseCase(

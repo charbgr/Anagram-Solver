@@ -13,7 +13,7 @@ import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
 import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.arch.SearchView
 import com.bmpak.anagramsolver.ui.search.arch.SearchViewModel
-import com.bmpak.anagramsolver.ui.search.arch.repository.MockAnagramRepository
+import com.bmpak.anagramsolver.framework.repository.anagram.MockAnagramRepository
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
 import com.bmpak.anagramsolver.utils.onTextChanged
 import kotlin.properties.Delegates
@@ -68,7 +68,8 @@ class SearchScreen : AppCompatActivity(), SearchView {
   }
 
   private fun setUpPresenter() {
-    presenter = SearchPresenter(SearchUseCase(MockAnagramRepository))
+    presenter = SearchPresenter(SearchUseCase(
+        MockAnagramRepository))
   }
 
   override fun bind(viewModel: SearchViewModel) {

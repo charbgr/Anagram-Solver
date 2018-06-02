@@ -1,4 +1,4 @@
-package com.bmpak.anagramsolver.ui.search.arch.repository
+package com.bmpak.anagramsolver.framework.repository.anagram
 
 import com.bmpak.anagramsolver.utils.Either
 import java.util.Random
