@@ -221,6 +221,11 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
         secondaryTitle.postDelayed({
           secondaryTitle.setText(viewModel.titleResId)
           bindSubTitle(viewModel)
+
+          secondaryTitle.postDelayed({
+            RealNavigator(this).toMainScreen()
+            finish()
+          }, 7000)
         }, 1500)
       }
     }

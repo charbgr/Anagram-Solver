@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bmpak.anagramsolver.R.id
 import com.bmpak.anagramsolver.R.layout
-import com.bmpak.anagramsolver.framework.navigator.RealNavigator
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
 import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
@@ -37,8 +36,6 @@ class SearchScreen : AppCompatActivity(), SearchView {
     setUpSearchBar()
     setUpSearchList()
     setUpPresenter()
-
-    RealNavigator(this).toOnboarding()
   }
 
   override fun onResume() {
