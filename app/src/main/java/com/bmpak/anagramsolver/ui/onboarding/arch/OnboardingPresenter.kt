@@ -3,6 +3,9 @@ package com.bmpak.anagramsolver.ui.onboarding.arch
 import com.bmpak.anagramsolver.framework.arch.Presenter
 import com.bmpak.anagramsolver.framework.navigator.Navigator
 import com.bmpak.anagramsolver.model.Dictionary
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.DOWNLOAD_LANGUAGES
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.INSTALL_LANGUAGE
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.PICKING_LANGUAGE
 
 class OnboardingPresenter(
     private val navigator: Navigator
@@ -18,16 +21,20 @@ class OnboardingPresenter(
     viewWRef.get()?.bind(viewModel)
   }
 
-  fun installDictionaries() {
-  }
-
-  fun initialOnboardingAnimationEnd() {
+  fun installStepClicked() {
+    this.viewModel = viewModel.copy(currentStep = DOWNLOAD_LANGUAGES)
+    viewWRef.get()?.showDownloadingFeedback()
     viewWRef.get()?.bind(viewModel)
   }
 
-  fun shuffle(word: String): String {
-    val chars = word.toMutableList()
-    chars.shuffle()
-    return chars.joinToString("")
+  fun downloadFinished() {
+    this.viewModel = viewModel.copy(currentStep = INSTALL_LANGUAGE)
+    viewWRef.get()?.bind(viewModel)
   }
+
+  fun initialOnboardingAnimationEnd() {
+    this.viewModel = viewModel.copy(currentStep = PICKING_LANGUAGE)
+    viewWRef.get()?.bind(viewModel)
+  }
+
 }

@@ -20,6 +20,22 @@ fun View.gone() {
   visibility = View.GONE
 }
 
+fun View.visibleOrGone(shouldBeVisible: Boolean) {
+  if (shouldBeVisible) {
+    visible()
+  } else {
+    gone()
+  }
+}
+
+fun View.visibleOrInvisible(shouldBeVisible: Boolean) {
+  if (shouldBeVisible) {
+    visible()
+  } else {
+    invisible()
+  }
+}
+
 inline fun ViewPropertyAnimator.onEnd(
     crossinline func: (animator: Animator) -> Unit
 ): ViewPropertyAnimator = setListener(object : SimpleAnimator() {

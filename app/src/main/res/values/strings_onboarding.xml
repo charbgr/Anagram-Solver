@@ -5,6 +5,11 @@
   <string name="onboarding_any_anagram">any anagram you want!</string>
   <string name="onboarding_first_step">First</string>
   <string name="onboarding_get_to_know">we want to get to pick languages</string>
-  <string name="onboarding_pick_languages">Pick languages</string>
+  <string name="onboarding_pick_languages_title">Pick languages</string>
   <string name="onboarding_install_step">Install</string>
+  <string name="onboarding_great">Great!</string>
+  <string name="onboarding_downloading_title">Downloading languages…</string>
+  <string name="onboarding_downloading_subtitle">Please wait while we download languages…</string>
+  <string name="onboarding_installing_title">Installing languages…</string>
+  <string name="onboarding_installing_subtitle">Performance depends on your device</string>
 </resources>

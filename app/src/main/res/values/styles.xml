@@ -70,4 +70,9 @@
     <item name="android:letterSpacing">0.05</item>
   </style>
 
+  <style name="Text.Onboarding.Subtitle">
+    <item name="android:textSize">14sp</item>
+    <item name="android:textStyle">italic</item>
+  </style>
+
 </resources>

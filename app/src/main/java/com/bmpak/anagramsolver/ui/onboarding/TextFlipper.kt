@@ -43,6 +43,10 @@ class TextFlipper : TextSwitcher {
     setText(context.getString(resId, *objects))
   }
 
+  fun setTextDelayed(@StringRes resId: Int, delayMillis: Long, vararg objects: Any) {
+    postDelayed({ setText(resId, objects) }, delayMillis)
+  }
+
   fun setCurrentText(@StringRes resId: Int, vararg objects: Any) {
     setCurrentText(context.getString(resId, *objects))
   }

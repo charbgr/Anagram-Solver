@@ -26,20 +26,22 @@
       tools:background="@color/dark"
       tools:layout_height="60dp"/>
 
-  <TextView
-      android:id="@+id/pick_language_title"
+  <com.bmpak.anagramsolver.ui.onboarding.TextFlipper
+      android:id="@+id/secondary_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="8dp"
       android:layout_marginEnd="8dp"
       android:layout_marginStart="8dp"
       android:layout_marginTop="8dp"
-      android:text="@string/onboarding_pick_languages"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.08"
+      tools:background="@color/dark"
+      tools:layout_height="40dp"
+      tools:layout_width="200dp"
       style="@style/Text.Onboarding"/>
 
   <com.bmpak.anagramsolver.utils.FlagView
@@ -91,6 +93,20 @@
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toEndOf="@+id/greek"
       app:layout_constraintTop_toTopOf="@+id/english"/>
+
+  <TextView
+      android:id="@+id/secondary_title_subtitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:textStyle="italic"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/secondary_title"
+      tools:text="@tools:sample/lorem"
+      style="@style/Text.Onboarding.Subtitle"/>
 
   <com.google.android.material.button.MaterialButton
       android:id="@+id/onboarding_install_button"
