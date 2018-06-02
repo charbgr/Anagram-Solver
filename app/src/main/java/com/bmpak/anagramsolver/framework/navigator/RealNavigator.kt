@@ -3,7 +3,7 @@ package com.bmpak.anagramsolver.framework.navigator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.bmpak.anagramsolver.MainActivity
+import com.bmpak.anagramsolver.ui.search.SearchScreen
 import com.bmpak.anagramsolver.ui.onboarding.OnboardingScreen
 
 class RealNavigator(
@@ -16,7 +16,7 @@ class RealNavigator(
   }
 
   override fun toMainScreen() {
-    val intent = createIntent(MainActivity::class.java)
+    val intent = createIntent(SearchScreen::class.java)
     context.startActivity(intent)
   }
 

@@ -1,4 +1,4 @@
-package com.bmpak.anagramsolver
+package com.bmpak.anagramsolver.ui.search
 
 import android.os.Bundle
 import android.widget.EditText
@@ -6,19 +6,21 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bmpak.anagramsolver.R.id
+import com.bmpak.anagramsolver.R.layout
 import com.bmpak.anagramsolver.framework.navigator.RealNavigator
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
 import com.bmpak.anagramsolver.ui.search.arch.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.arch.SearchView
 import com.bmpak.anagramsolver.ui.search.arch.SearchViewModel
-import com.bmpak.anagramsolver.ui.search.arch.repository.FirebaseRepository
+import com.bmpak.anagramsolver.ui.search.arch.repository.MockAnagramRepository
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
 import com.bmpak.anagramsolver.utils.onTextChanged
 import kotlin.properties.Delegates
 
 
-class MainActivity : AppCompatActivity(), SearchView {
+class SearchScreen : AppCompatActivity(), SearchView {
 
   private lateinit var searchBar: EditText
   private lateinit var resultsTitle: TextView
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity(), SearchView {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(layout.screen_main)
 
     findViews()
     setUpSearchBar()
@@ -39,15 +41,20 @@ class MainActivity : AppCompatActivity(), SearchView {
     RealNavigator(this).toOnboarding()
   }
 
+  override fun onResume() {
+    presenter.init(this)
+    super.onResume()
+  }
+
   override fun onStop() {
     presenter.destroy()
     super.onStop()
   }
 
   private fun findViews() {
-    searchBar = findViewById(R.id.searchbar)
-    resultsTitle = findViewById(R.id.results_found_words_title)
-    resultsList = findViewById(R.id.results_found_words_list)
+    searchBar = findViewById(id.searchbar)
+    resultsTitle = findViewById(id.results_found_words_title)
+    resultsList = findViewById(id.results_found_words_list)
   }
 
   private fun setUpSearchBar() {
@@ -64,8 +71,7 @@ class MainActivity : AppCompatActivity(), SearchView {
   }
 
   private fun setUpPresenter() {
-    presenter = SearchPresenter(SearchUseCase(FirebaseRepository))
-    presenter.init(this)
+    presenter = SearchPresenter(SearchUseCase(MockAnagramRepository))
   }
 
   override fun bind(viewModel: SearchViewModel) {

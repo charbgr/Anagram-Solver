@@ -50,7 +50,7 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_onboarding)
+    setContentView(R.layout.screen_onboarding)
     findViews()
     setUpViews()
     setUpPresenter()
