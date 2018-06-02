@@ -2,7 +2,7 @@ package com.bmpak.anagramsolver.utils.animations
 
 import android.animation.Animator
 
-open class SimpleValueAnimator: Animator.AnimatorListener {
+open class SimpleAnimator: Animator.AnimatorListener {
   override fun onAnimationRepeat(p0: Animator) {
   }
 

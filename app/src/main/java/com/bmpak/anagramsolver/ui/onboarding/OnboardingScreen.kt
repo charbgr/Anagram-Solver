@@ -9,9 +9,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bmpak.anagramsolver.R
+import com.bmpak.anagramsolver.framework.navigator.RealNavigator
+import com.bmpak.anagramsolver.model.Dictionary.ENGLISH
+import com.bmpak.anagramsolver.model.Dictionary.FRANCE
+import com.bmpak.anagramsolver.model.Dictionary.GERMAN
+import com.bmpak.anagramsolver.model.Dictionary.GREEK
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingPresenter
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingView
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingViewModel
 import com.bmpak.anagramsolver.utils.locationInWindow
+import com.bmpak.anagramsolver.utils.onEnd
 import com.google.android.material.button.MaterialButton
 
 
@@ -34,6 +41,7 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_onboarding)
     findViews()
+    setUpViews()
     setUpPresenter()
     animateBackground()
     animateContent()
@@ -53,9 +61,17 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     greekIv = findViewById(R.id.greek)
     frenchIv = findViewById(R.id.french)
     germanIv = findViewById(R.id.german)
-    englishIv.setOnClickListener { toggleInstallButton() }
 
     installBtn = findViewById(R.id.onboarding_install_button)
+  }
+
+  private fun setUpViews() {
+    englishIv.setOnClickListener { presenter.dictionaryClicked(ENGLISH) }
+    greekIv.setOnClickListener { presenter.dictionaryClicked(GREEK) }
+    frenchIv.setOnClickListener { presenter.dictionaryClicked(FRANCE) }
+    germanIv.setOnClickListener { presenter.dictionaryClicked(GERMAN) }
+
+    installBtn.setOnClickListener { presenter.installDictionaries() }
   }
 
   private fun animateBackground() {
@@ -107,13 +123,14 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
 
       AnimatorSet().apply {
         playSequentially(animatorSet1, animatorSet3)
+        onEnd { presenter.initialOnboardingAnimationEnd() }
         start()
       }
     }, 7200)
   }
 
   private fun setUpPresenter() {
-    presenter = OnboardingPresenter()
+    presenter = OnboardingPresenter(RealNavigator(this))
     presenter.init(this)
   }
 
@@ -137,5 +154,13 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
   private fun disableInstallButton() {
     installBtn.isEnabled = false
     installBtn.animate().alpha(0.5f).start()
+  }
+
+  override fun bind(viewModel: OnboardingViewModel) {
+    if (viewModel.shouldEnableInstallButton) {
+      enableInstallButton()
+    } else {
+      disableInstallButton()
+    }
   }
 }
