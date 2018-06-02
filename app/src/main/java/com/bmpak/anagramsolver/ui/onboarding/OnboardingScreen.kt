@@ -4,13 +4,13 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bmpak.anagramsolver.R
 import com.bmpak.anagramsolver.framework.navigator.RealNavigator
+import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.Dictionary.ENGLISH
 import com.bmpak.anagramsolver.model.Dictionary.FRANCE
 import com.bmpak.anagramsolver.model.Dictionary.GERMAN
@@ -18,6 +18,7 @@ import com.bmpak.anagramsolver.model.Dictionary.GREEK
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingPresenter
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingView
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingViewModel
+import com.bmpak.anagramsolver.utils.FlagView
 import com.bmpak.anagramsolver.utils.locationInWindow
 import com.bmpak.anagramsolver.utils.onEnd
 import com.google.android.material.button.MaterialButton
@@ -31,10 +32,10 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
   private lateinit var title: TextFlipper
   private lateinit var pickLanguageTitle: TextView
 
-  private lateinit var englishIv: ImageView
-  private lateinit var greekIv: ImageView
-  private lateinit var frenchIv: ImageView
-  private lateinit var germanIv: ImageView
+  private lateinit var englishIv: FlagView
+  private lateinit var greekIv: FlagView
+  private lateinit var frenchIv: FlagView
+  private lateinit var germanIv: FlagView
 
   private lateinit var installBtn: MaterialButton
 
@@ -46,6 +47,11 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     setUpPresenter()
     animateBackground()
     animateContent()
+  }
+
+  override fun onResume() {
+    presenter.init(this)
+    super.onResume()
   }
 
   override fun onStop() {
@@ -73,7 +79,8 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     germanIv.setOnClickListener { presenter.dictionaryClicked(GERMAN) }
 
     installBtn.setOnClickListener {
-      Toast.makeText(this, presenter.viewModel.pickedDictionaries.toString(), Toast.LENGTH_LONG).show()
+      Toast.makeText(this, presenter.viewModel.pickedDictionaries.toString(),
+          Toast.LENGTH_LONG).show()
       presenter.installDictionaries()
     }
   }
@@ -135,7 +142,6 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
 
   private fun setUpPresenter() {
     presenter = OnboardingPresenter(RealNavigator(this))
-    presenter.init(this)
   }
 
   private fun changeTitleTextDelayed(resId: Int, duration: Long = 300) {
@@ -152,11 +158,31 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     installBtn.animate().alpha(0.5f).start()
   }
 
+  private fun toggleFlag(dictionary: Dictionary, isAboutToPicked: Boolean) {
+    val view = findDictionaryView(dictionary)
+    if (isAboutToPicked) {
+      view.pick()
+    } else {
+      view.unpick()
+    }
+  }
+
+  private fun findDictionaryView(dictionary: Dictionary): FlagView = when (dictionary) {
+    ENGLISH -> englishIv
+    GREEK -> greekIv
+    FRANCE -> frenchIv
+    GERMAN -> germanIv
+  }
+
   override fun bind(viewModel: OnboardingViewModel) {
     if (viewModel.shouldEnableInstallButton) {
       enableInstallButton()
     } else {
       disableInstallButton()
+    }
+
+    viewModel.pickedDictionaries.forEach {
+      toggleFlag(it.key, it.value)
     }
   }
 }

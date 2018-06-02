@@ -16,6 +16,5 @@
 
   <dimen name="anagram_item_title_min_height">21dp</dimen>
   <dimen name="dictionary_large_wh">50dp</dimen>
-  <dimen name="dictionary_mini_wh">20dp</dimen>
-
+  <dimen name="flag_border">2dp</dimen>
 </resources>

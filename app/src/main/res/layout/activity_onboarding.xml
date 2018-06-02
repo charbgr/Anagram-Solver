@@ -42,7 +42,7 @@
       app:layout_constraintVertical_bias="0.08"
       style="@style/Text.Onboarding"/>
 
-  <ImageView
+  <com.bmpak.anagramsolver.utils.FlagView
       android:id="@+id/english"
       android:layout_width="@dimen/dictionary_large_wh"
       android:layout_height="@dimen/dictionary_large_wh"
@@ -56,10 +56,11 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"/>
 
-  <ImageView
+  <com.bmpak.anagramsolver.utils.FlagView
       android:id="@+id/greek"
       android:layout_width="@dimen/dictionary_large_wh"
       android:layout_height="@dimen/dictionary_large_wh"
+      android:elevation="6dp"
       android:src="@drawable/ic_greece_flag"
       android:tooltipText="@string/tooltip_greece"
       app:layout_constraintEnd_toStartOf="@+id/french"
@@ -67,10 +68,11 @@
       app:layout_constraintStart_toEndOf="@+id/english"
       app:layout_constraintTop_toTopOf="@+id/english"/>
 
-  <ImageView
+  <com.bmpak.anagramsolver.utils.FlagView
       android:id="@+id/german"
       android:layout_width="@dimen/dictionary_large_wh"
       android:layout_height="@dimen/dictionary_large_wh"
+      android:elevation="8dp"
       android:src="@drawable/ic_germany_flag"
       android:tooltipText="@string/tooltip_german"
       app:layout_constraintEnd_toEndOf="parent"
@@ -78,10 +80,11 @@
       app:layout_constraintStart_toEndOf="@+id/french"
       app:layout_constraintTop_toTopOf="@+id/english"/>
 
-  <ImageView
+  <com.bmpak.anagramsolver.utils.FlagView
       android:id="@+id/french"
       android:layout_width="@dimen/dictionary_large_wh"
       android:layout_height="@dimen/dictionary_large_wh"
+      android:elevation="10dp"
       android:src="@drawable/ic_france_flag"
       android:tooltipText="@string/tooltip_france"
       app:layout_constraintEnd_toStartOf="@+id/german"

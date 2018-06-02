@@ -1,10 +1,10 @@
 package com.bmpak.anagramsolver.utils
 
 import android.animation.Animator
-import android.animation.AnimatorSet
 import android.graphics.Point
 import android.view.View
 import android.view.ViewPropertyAnimator
+import androidx.annotation.Px
 import androidx.core.view.ViewCompat
 import com.bmpak.anagramsolver.utils.animations.SimpleAnimator
 
@@ -28,7 +28,21 @@ inline fun ViewPropertyAnimator.onEnd(
   }
 })
 
-inline fun AnimatorSet.onEnd(
+inline fun ViewPropertyAnimator.onMiddle(
+    crossinline func: (animator: Animator) -> Unit
+): ViewPropertyAnimator {
+  var isFuncInvoked = false
+  setUpdateListener {
+    if (it.animatedFraction >= 0.5 && !isFuncInvoked) {
+      func(it)
+      isFuncInvoked = true
+    }
+  }
+
+  return this
+}
+
+inline fun Animator.onEnd(
     crossinline func: (animator: Animator) -> Unit
 ) = addListener(object : SimpleAnimator() {
   override fun onAnimationEnd(p0: Animator) {
@@ -55,3 +69,18 @@ inline val View.locationOnScreen: Point
       Point(it[0], it[1])
     }
   }
+
+/**
+ * Updates this view's padding. This version of the method allows using named parameters
+ * to just set one or more axes.
+ *
+ * @see View.setPadding
+ */
+fun View.updatePadding(
+    @Px left: Int = paddingLeft,
+    @Px top: Int = paddingTop,
+    @Px right: Int = paddingRight,
+    @Px bottom: Int = paddingBottom
+) {
+  setPadding(left, top, right, bottom)
+}
