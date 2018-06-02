@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bmpak.anagramsolver.R
@@ -71,7 +72,10 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     frenchIv.setOnClickListener { presenter.dictionaryClicked(FRANCE) }
     germanIv.setOnClickListener { presenter.dictionaryClicked(GERMAN) }
 
-    installBtn.setOnClickListener { presenter.installDictionaries() }
+    installBtn.setOnClickListener {
+      Toast.makeText(this, presenter.viewModel.pickedDictionaries.toString(), Toast.LENGTH_LONG).show()
+      presenter.installDictionaries()
+    }
   }
 
   private fun animateBackground() {
@@ -136,14 +140,6 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
 
   private fun changeTitleTextDelayed(resId: Int, duration: Long = 300) {
     title.postDelayed({ title.setText(resId) }, duration)
-  }
-
-  private fun toggleInstallButton() {
-    if (installBtn.isEnabled) {
-      disableInstallButton()
-    } else {
-      enableInstallButton()
-    }
   }
 
   private fun enableInstallButton() {
