@@ -10,7 +10,8 @@
       android:name=".App"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".ui.search.SearchScreen">
+
+    <activity android:name=".BootTrampolineActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -18,13 +19,11 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".ui.search.SearchScreen">
+    </activity>
+
     <activity android:name=".ui.onboarding.OnboardingScreen"
         android:theme="@style/AppTheme.Onboarding">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
     </activity>
   </application>
 
