@@ -1,6 +1,5 @@
-package com.bmpak.anagramsolver.ui.search.arch
+package com.bmpak.anagramsolver.framework.usecase
 
-import com.bmpak.anagramsolver.framework.arch.UseCase
 import com.bmpak.anagramsolver.framework.repository.anagram.AnagramRepository
 import com.bmpak.anagramsolver.utils.Either
 
