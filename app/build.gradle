@@ -39,6 +39,7 @@ dependencies {
 
     implementation deps.firebase.core
     implementation deps.firebase.database
+    implementation deps.firebase.storage
 
     implementation deps.timber
 

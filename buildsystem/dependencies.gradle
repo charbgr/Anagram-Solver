@@ -17,6 +17,7 @@ ext {
   firebase_core_version = '16.0.0'
   firebase_database_version = '16.0.1'
   firebase_performance_version = '16.0.0'
+  firebase_storage_version = '16.0.1'
   workmanager_version = '1.0.0-alpha01'
   timber_version = '4.7.0'
 
@@ -36,7 +37,8 @@ ext {
     firebase : [
         core : "com.google.firebase:firebase-core:$firebase_core_version",
         database : "com.google.firebase:firebase-database:$firebase_database_version",
-        performance: "com.google.firebase:firebase-perf:$firebase_performance_version"
+        performance: "com.google.firebase:firebase-perf:$firebase_performance_version",
+        storage: "com.google.firebase:firebase-storage:$firebase_storage_version",
     ],
     kotlin : [
         core : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
