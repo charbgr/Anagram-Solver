@@ -10,12 +10,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.bmpak.anagramsolver.R
-import com.bmpak.anagramsolver.framework.navigator.RealNavigator
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.Dictionary.ENGLISH
 import com.bmpak.anagramsolver.model.Dictionary.FRANCE
 import com.bmpak.anagramsolver.model.Dictionary.GERMAN
 import com.bmpak.anagramsolver.model.Dictionary.GREEK
+import com.bmpak.anagramsolver.model.DownloadStatus
+import com.bmpak.anagramsolver.model.DownloadStatus.Downloading
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingPresenter
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.DOWNLOAD_LANGUAGES
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.INSTALL_LANGUAGE
@@ -33,6 +34,7 @@ import com.google.android.material.button.MaterialButton
 
 
 class OnboardingScreen : AppCompatActivity(), OnboardingView {
+
 
   private lateinit var presenter: OnboardingPresenter
 
@@ -148,7 +150,7 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
   }
 
   private fun setUpPresenter() {
-    presenter = OnboardingPresenter(RealNavigator(this))
+    presenter = OnboardingPresenter.create(this)
   }
 
   private fun enableInstallButton() {
@@ -201,8 +203,6 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
         viewModel.pickedDictionaries.forEach {
           findDictionaryView(it.key).visibleOrGone(it.value)
         }
-
-        rootLayout.postDelayed({ presenter.downloadFinished() }, 5000)
       }
     }
 
@@ -221,11 +221,6 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
         secondaryTitle.postDelayed({
           secondaryTitle.setText(viewModel.titleResId)
           bindSubTitle(viewModel)
-
-          secondaryTitle.postDelayed({
-            RealNavigator(this).toMainScreen()
-            finish()
-          }, 7000)
         }, 1500)
       }
     }
@@ -249,5 +244,17 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
 
   override fun showDownloadingFeedback() {
     secondaryTitle.setText(R.string.onboarding_great)
+  }
+
+  override fun bindDownloadStatus(downloadStatus: DownloadStatus) {
+    when (downloadStatus) {
+      is Downloading -> {
+        secondaryTitle.setText(downloadStatus.percentage.toString())
+      }
+      else -> {
+        secondaryTitle.setText(downloadStatus.toString())
+      }
+    }
+
   }
 }
