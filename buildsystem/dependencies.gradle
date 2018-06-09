@@ -18,7 +18,7 @@ ext {
   firebase_database_version = '16.0.1'
   firebase_performance_version = '16.0.0'
   firebase_storage_version = '16.0.1'
-  workmanager_version = '1.0.0-alpha01'
+  workmanager_version = '1.0.0-alpha02'
   timber_version = '4.7.0'
 
   // test
