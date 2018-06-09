@@ -30,9 +30,9 @@ ext {
       appCompat : "androidx.appcompat:appcompat:$appcompat_version",
       constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
       material : "com.google.android.material:material:$material_version",
-        arch : [
-          workmanager: "android.arch.work:work-runtime:$workmanager_version"
-        ]
+      arch : [
+        workmanager: "android.arch.work:work-runtime:$workmanager_version"
+      ]
     ],
     firebase : [
         core : "com.google.firebase:firebase-core:$firebase_core_version",
