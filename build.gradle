@@ -6,6 +6,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0-alpha17'
@@ -18,6 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap' }
     }
 }
 
