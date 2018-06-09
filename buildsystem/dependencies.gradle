@@ -31,7 +31,10 @@ ext {
       constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
       material : "com.google.android.material:material:$material_version",
       arch : [
-        workmanager: "android.arch.work:work-runtime:$workmanager_version"
+        workmanager: [
+          runtime: "android.arch.work:work-runtime:$workmanager_version",
+          firebase: "android.arch.work:work-firebase:$workmanager_version"
+        ]
       ]
     ],
     firebase : [
