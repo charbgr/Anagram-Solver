@@ -48,6 +48,7 @@ class OnboardingPresenter(
           viewWRef.get()?.bindDownloadStatus(s)
           if (s is DownloadStatus.Success) {
             navigator.toMainScreen()
+            downloadFinished()
           }
         }
         else -> {

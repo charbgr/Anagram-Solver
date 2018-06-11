@@ -17,6 +17,7 @@ class SearchPresenter(
         viewWRef.get()?.bind(SearchViewModel(anagrams, SearchResult.of(anagrams)))
       }, {
         Timber.e(it)
+        viewWRef.get()?.bind(SearchViewModel(emptyList(), SearchResult.NOT_FOUND))
       })
     })
   }
