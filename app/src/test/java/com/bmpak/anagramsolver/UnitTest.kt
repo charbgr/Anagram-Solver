@@ -2,6 +2,7 @@ package com.bmpak.anagramsolver
 
 import com.bmpak.anagramsolver.framework.arch.CoroutineContextProvider
 import kotlinx.coroutines.experimental.Unconfined
+import timber.log.Timber
 import kotlin.coroutines.experimental.CoroutineContext
 
 open class UnitTest {
@@ -11,5 +12,9 @@ open class UnitTest {
       override val asyncPool: CoroutineContext = Unconfined
       override val ui: CoroutineContext = Unconfined
     }
+  }
+
+  init {
+    Timber.plant(DebugSystemTree)
   }
 }
