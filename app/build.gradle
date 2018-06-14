@@ -38,7 +38,6 @@ dependencies {
     implementation deps.android.material
 
     implementation deps.android.arch.workmanager.runtime
-    implementation deps.android.arch.workmanager.firebase
 
     implementation deps.firebase.core
     implementation deps.firebase.database

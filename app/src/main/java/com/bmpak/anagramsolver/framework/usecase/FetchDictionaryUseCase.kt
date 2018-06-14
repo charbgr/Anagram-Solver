@@ -1,5 +1,7 @@
 package com.bmpak.anagramsolver.framework.usecase
 
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.bmpak.anagramsolver.framework.arch.CoroutineContextProvider
 import com.bmpak.anagramsolver.framework.repository.dictionary.FetchDictionaryRepository
 import com.bmpak.anagramsolver.model.Dictionary
@@ -11,6 +13,12 @@ class FetchDictionaryUseCase(
     private val repository: FetchDictionaryRepository,
     coContextProvider: CoroutineContextProvider = CoroutineContextProvider.Real
 ) : UseCase<ReceiveChannel<DownloadStatus>, Dictionary>(coContextProvider) {
+
+
+  fun testScheduleFetch() {
+    val workRequest = OneTimeWorkRequest.from(FetchWorker::class.java)
+    WorkManager.getInstance().enqueue(workRequest)
+  }
 
   @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
   override suspend fun run(

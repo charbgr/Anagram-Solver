@@ -16,7 +16,7 @@ import kotlinx.coroutines.experimental.channels.consumeEach
 
 class OnboardingPresenter(
     private val navigator: Navigator,
-    private val fetchDictionaryUseCase: FetchDictionaryUseCase
+    val fetchDictionaryUseCase: FetchDictionaryUseCase
 ) : Presenter<OnboardingView>() {
 
   companion object {

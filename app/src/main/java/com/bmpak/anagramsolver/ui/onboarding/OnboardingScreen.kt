@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
+import androidx.work.Configuration
+import androidx.work.WorkManager
 import com.bmpak.anagramsolver.R
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.Dictionary.ENGLISH
@@ -58,6 +60,8 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     setUpPresenter()
     animateBackground()
     animateContent()
+    WorkManager.initialize(this, Configuration.Builder().build())
+    presenter.fetchDictionaryUseCase.testScheduleFetch()
   }
 
   override fun onResume() {
