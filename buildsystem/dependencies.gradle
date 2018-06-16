@@ -20,6 +20,7 @@ ext {
   firebase_storage_version = '16.0.1'
   workmanager_version = '1.0.0-alpha02'
   timber_version = '4.7.0'
+  okio_version = '1.14.1'
 
   // test
   truth_version = '0.40'
@@ -50,7 +51,8 @@ ext {
             android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
         ]
     ],
-    timber: "com.jakewharton.timber:timber:$timber_version"
+    timber: "com.jakewharton.timber:timber:$timber_version",
+    okio: "com.squareup.okio:okio:$okio_version"
   ]
 
   test = [

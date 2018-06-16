@@ -44,6 +44,7 @@ dependencies {
     implementation deps.firebase.storage
 
     implementation deps.timber
+    implementation deps.okio
 
     testImplementation test.junit
     testImplementation test.truth
