@@ -10,7 +10,7 @@ ext {
   // Libs
   appcompat_version = '1.0.0-alpha1'
   material_version = '1.0.0-alpha1'
-  kotlin_version = '1.2.50-eap-62'
+  kotlin_version = '1.2.50'
   kotlin_coroutines_version = '0.22.1'
   support_version = '27.1.1'
   constraintlayout_version = '1.1.0'
