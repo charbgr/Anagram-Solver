@@ -17,7 +17,7 @@ class FetchDictionaryUseCase(
 
   fun testScheduleFetch() {
     val workRequest = OneTimeWorkRequest.from(FetchWorker::class.java)
-    WorkManager.getInstance().enqueue(workRequest)
+    WorkManager.getInstance()?.enqueue(workRequest)
   }
 
   @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")

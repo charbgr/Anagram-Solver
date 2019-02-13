@@ -1,7 +1,6 @@
 package com.bmpak.anagramsolver.framework.usecase
 
 import androidx.work.Worker
-import androidx.work.Worker.WorkerResult.FAILURE
 import com.bmpak.anagramsolver.framework.repository.dictionary.FirebaseDictionaryRepository
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.utils.Either.Left
@@ -10,13 +9,13 @@ import kotlinx.coroutines.experimental.runBlocking
 import timber.log.Timber
 
 class FetchWorker : Worker() {
-  override fun doWork(): WorkerResult {
+  override fun doWork(): Worker.Result {
     Timber.d("Work : Start")
     val either = runBlocking {
       FetchDictionaryUseCase(FirebaseDictionaryRepository).run(Dictionary.GREEK)
     }
     if (either is Right) {
-      return FAILURE
+      return Worker.Result.FAILURE
     }
     either as Left
 
@@ -27,6 +26,6 @@ class FetchWorker : Worker() {
     }
 
     Timber.d("Work : Return")
-    return WorkerResult.SUCCESS
+    return Worker.Result.SUCCESS
   }
 }
