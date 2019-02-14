@@ -1,13 +1,13 @@
 package com.bmpak.anagramsolver.framework.repository.anagram
 
-import com.bmpak.anagramsolver.utils.Either
-import java.util.Random
-import java.util.UUID
+import io.reactivex.Single
+import java.util.*
 
 object MockAnagramRepository : AnagramRepository {
-  override suspend fun fetch(query: CharSequence): Either<List<String>, Throwable> {
+
+  override fun fetch(query: CharSequence): Single<List<String>> {
     if (query.isEmpty()) {
-      return Either.Left(emptyList())
+      return Single.just(emptyList())
     }
     val anagrams = mutableListOf<String>()
     for (i in 0..((0..10).random())) {
@@ -15,7 +15,7 @@ object MockAnagramRepository : AnagramRepository {
       anagrams.add(randomText.substring(0, query.length))
     }
 
-    return Either.Left(anagrams)
+    return Single.just(anagrams)
   }
 }
 
