@@ -21,17 +21,9 @@ android {
     }
 }
 
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin.core
-    implementation deps.kotlin.coroutines.core
-    implementation deps.kotlin.coroutines.android
 
     implementation deps.android.appCompat
     implementation deps.android.constraintLayout
@@ -42,6 +34,9 @@ dependencies {
     implementation deps.firebase.core
     implementation deps.firebase.database
     implementation deps.firebase.storage
+
+    implementation deps.rx.kotlin
+    implementation deps.rx.android
 
     implementation deps.timber
     implementation deps.okio

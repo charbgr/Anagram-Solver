@@ -8,23 +8,21 @@ import com.bmpak.anagramsolver.framework.repository.dictionary.FirebaseDictionar
 import com.bmpak.anagramsolver.framework.usecase.FetchDictionaryUseCase
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
-import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.DOWNLOAD_LANGUAGES
-import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.INSTALL_LANGUAGE
-import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.PICKING_LANGUAGE
-import com.bmpak.anagramsolver.utils.Either.Left
-import kotlinx.coroutines.experimental.channels.consumeEach
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.*
+import io.reactivex.rxkotlin.plusAssign
+import io.reactivex.subscribers.ResourceSubscriber
 
 class OnboardingPresenter(
-    private val navigator: Navigator,
-    val fetchDictionaryUseCase: FetchDictionaryUseCase
+  private val navigator: Navigator,
+  val fetchDictionaryUseCase: FetchDictionaryUseCase
 ) : Presenter<OnboardingView>() {
 
   companion object {
     fun create(context: Context): OnboardingPresenter =
-        OnboardingPresenter(
-            navigator = RealNavigator(context),
-            fetchDictionaryUseCase = FetchDictionaryUseCase(FirebaseDictionaryRepository)
-        )
+      OnboardingPresenter(
+        navigator = RealNavigator(context),
+        fetchDictionaryUseCase = FetchDictionaryUseCase(FirebaseDictionaryRepository)
+      )
   }
 
   var viewModel: OnboardingViewModel = OnboardingViewModel.INITIAL
@@ -42,20 +40,23 @@ class OnboardingPresenter(
     viewWRef.get()?.showDownloadingFeedback()
     viewWRef.get()?.bind(viewModel)
 
-    fetchDictionaryUseCase.execute(Dictionary.GREEK) { result ->
-      when (result) {
-        is Left -> result.value.consumeEach { s ->
-          viewWRef.get()?.bindDownloadStatus(s)
-          if (s is DownloadStatus.Success) {
+    disposables += fetchDictionaryUseCase
+      .build(Dictionary.GREEK)
+      .subscribeWith(object : ResourceSubscriber<DownloadStatus>() {
+        override fun onComplete() {
+        }
+
+        override fun onNext(downloadStatus: DownloadStatus) {
+          viewWRef.get()?.bindDownloadStatus(downloadStatus)
+          if (downloadStatus is DownloadStatus.Success) {
             navigator.toMainScreen()
             downloadFinished()
           }
         }
-        else -> {
-          //TODO
+
+        override fun onError(e: Throwable) {
         }
-      }
-    }
+      })
   }
 
   fun downloadFinished() {

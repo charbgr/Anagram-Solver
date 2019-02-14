@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bmpak.anagramsolver.R.id
 import com.bmpak.anagramsolver.R.layout
+import com.bmpak.anagramsolver.framework.repository.anagram.MockAnagramRepository2
+import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
-import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.arch.SearchView
 import com.bmpak.anagramsolver.ui.search.arch.SearchViewModel
-import com.bmpak.anagramsolver.framework.repository.anagram.MockAnagramRepository
 import com.bmpak.anagramsolver.utils.disableNumberAndSpaceInput
 import com.bmpak.anagramsolver.utils.onTextChanged
 import kotlin.properties.Delegates
@@ -68,8 +68,7 @@ class SearchScreen : AppCompatActivity(), SearchView {
   }
 
   private fun setUpPresenter() {
-    presenter = SearchPresenter(SearchUseCase(
-        MockAnagramRepository))
+    presenter = SearchPresenter(SearchUseCase(MockAnagramRepository2))
   }
 
   override fun bind(viewModel: SearchViewModel) {
