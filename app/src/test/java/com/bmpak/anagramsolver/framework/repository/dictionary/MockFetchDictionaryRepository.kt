@@ -1,19 +1,13 @@
 package com.bmpak.anagramsolver.framework.repository.dictionary
 
-import com.bmpak.anagramsolver.UnitTest
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
-import kotlinx.coroutines.experimental.channels.RendezvousChannel
-import kotlinx.coroutines.experimental.launch
+import io.reactivex.Flowable
 
-class MockFetchDictionaryRepository : FetchDictionaryRepository {
+class MockFetchDictionaryRepository(
+  private val downloadStatus: DownloadStatus = DownloadStatus.Pause
+) : FetchDictionaryRepository {
 
-  private var fetchReceiveChannel = RendezvousChannel<DownloadStatus>()
-
-  override fun fetch(dictionary: Dictionary) = fetchReceiveChannel
-
-  fun onFetch(downloadStatus: DownloadStatus) {
-    launch(UnitTest.NOW) { fetchReceiveChannel.send(downloadStatus) }
-  }
+  override fun fetch(dictionary: Dictionary) = Flowable.just(downloadStatus)
 }
 

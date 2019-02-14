@@ -2,6 +2,7 @@ package com.bmpak.anagramsolver.framework.repository.anagram
 
 import com.bmpak.anagramsolver.Boom
 import com.bmpak.anagramsolver.utils.Either
+import io.reactivex.Single
 
 class MockAnagramRepository : AnagramRepository {
 
@@ -15,5 +16,11 @@ class MockAnagramRepository : AnagramRepository {
     this.fetchPayload = Either.Right(throwable)
   }
 
-  override suspend fun fetch(query: CharSequence) = fetchPayload
+  override fun fetch(query: CharSequence): Single<List<String>> {
+    val safePayload = fetchPayload
+    return when (safePayload) {
+      is Either.Left -> Single.just(safePayload.value)
+      is Either.Right -> Single.error(safePayload.value)
+    }
+  }
 }

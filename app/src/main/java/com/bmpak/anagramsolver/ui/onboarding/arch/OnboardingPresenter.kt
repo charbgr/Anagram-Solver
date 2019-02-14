@@ -9,7 +9,6 @@ import com.bmpak.anagramsolver.framework.usecase.FetchDictionaryUseCase
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.*
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.subscribers.ResourceSubscriber
 
@@ -40,8 +39,6 @@ class OnboardingPresenter(
     this.viewModel = viewModel.copy(currentStep = DOWNLOAD_LANGUAGES)
     viewWRef.get()?.showDownloadingFeedback()
     viewWRef.get()?.bind(viewModel)
-
-    val disposables = CompositeDisposable()
 
     disposables += fetchDictionaryUseCase
       .build(Dictionary.GREEK)

@@ -3,7 +3,7 @@ package com.bmpak.anagramsolver.framework.repository.anagram
 import io.reactivex.Single
 import java.util.*
 
-object MockAnagramRepository : AnagramRepository {
+object MockAnagramRepository2 : AnagramRepository {
 
   override fun fetch(query: CharSequence): Single<List<String>> {
     if (query.isEmpty()) {

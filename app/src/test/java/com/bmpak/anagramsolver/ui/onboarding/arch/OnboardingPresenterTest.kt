@@ -49,21 +49,19 @@ class OnboardingPresenterTest : UnitTest() {
   fun test_binds_new_viewmodel_for_install_step() {
     val file = File.createTempFile("foo", "txt")
     val view = MockOnboardingView()
-    val repository = MockFetchDictionaryRepository()
+    val repository = MockFetchDictionaryRepository(DownloadStatus.Success(file))
     val presenter = presenter(repository = repository)
     presenter.init(view)
 
     presenter.installStepClicked()
-    view.bindTapes.reset()
-    repository.onFetch(DownloadStatus.Success(file))
 
     assertThat(presenter.viewModel.currentStep).isEqualTo(OnboardingStep.INSTALL_LANGUAGE)
-    view.bindTapes.assertRenderedOnce()
+    view.bindTapes.assertRenderedTimes(2)
     file.delete()
   }
 
   private fun presenter(
       navigator: Navigator = MockNavigator(),
       repository: FetchDictionaryRepository = MockFetchDictionaryRepository()
-  ) = OnboardingPresenter(navigator, FetchDictionaryUseCase(repository, NOW_CO_PROVIDER))
+  ) = OnboardingPresenter(navigator, FetchDictionaryUseCase(repository, NOW_SCHEDULER_PROVIDER))
 }
