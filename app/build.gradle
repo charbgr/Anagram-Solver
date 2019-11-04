@@ -41,9 +41,9 @@ dependencies {
     implementation deps.timber
     implementation deps.okio
 
-    testImplementation test.junit
-    testImplementation test.truth
-    testImplementation test.mockk
+    testImplementation deps.test.junit
+    testImplementation deps.test.truth
+    testImplementation deps.test.mockk
 }
 
 apply plugin: 'com.google.gms.google-services'

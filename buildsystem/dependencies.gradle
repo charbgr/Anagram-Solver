@@ -64,13 +64,13 @@ ext {
             ]
     ]  ,
     timber: "com.jakewharton.timber:timber:$timber_version",
-    okio: "com.squareup.okio:okio:$okio_version"
-  ]
+    okio: "com.squareup.okio:okio:$okio_version",
 
-  test = [
-    truth: "com.google.truth:truth:$truth_version",
-    junit: "junit:junit:$junit_version",
-    room: "androidx.room:room-testing:$room_version",
-    mockk: "io.mockk:mockk:$mockk_version"
+    test : [
+        truth: "com.google.truth:truth:$truth_version",
+        junit: "junit:junit:$junit_version",
+        room: "androidx.room:room-testing:$room_version",
+        mockk: "io.mockk:mockk:$mockk_version"
+    ]
   ]
 }
