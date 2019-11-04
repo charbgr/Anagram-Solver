@@ -43,6 +43,7 @@ dependencies {
 
     testImplementation test.junit
     testImplementation test.truth
+    testImplementation test.mockk
 }
 
 apply plugin: 'com.google.gms.google-services'

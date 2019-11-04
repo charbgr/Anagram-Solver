@@ -27,6 +27,7 @@ ext {
   // test
   truth_version = '0.40'
   junit_version = '4.12'
+  mockk_version = '1.9.3'
 
   deps = [
     android : [
@@ -69,6 +70,7 @@ ext {
   test = [
     truth: "com.google.truth:truth:$truth_version",
     junit: "junit:junit:$junit_version",
-    room: "androidx.room:room-testing:$room_version"
+    room: "androidx.room:room-testing:$room_version",
+    mockk: "io.mockk:mockk:$mockk_version"
   ]
 }
