@@ -8,9 +8,10 @@ import org.junit.Test
 
 class SearchPresenterTest : UnitTest() {
 
+  private val robot = SearchRobot()
+
   @Test
   fun test_anagrams_found() {
-    val view = MockSearchView()
     val repo = MockAnagramRepository().fetchSuccess(listOf("foo"))
 //    val presenter = presenter(repo)
 //    presenter.init(view)
@@ -25,28 +26,22 @@ class SearchPresenterTest : UnitTest() {
 
   @Test
   fun test_anagrams_not_found_() {
-    val view = MockSearchView()
     val presenter = presenter(MockAnagramRepository().fetchSuccess(emptyList()))
-    presenter.init(view)
+    presenter.init(robot.view)
 
     presenter.search("ofo")
 
-    view.bindTapes.assertRenders(
-        SearchViewModel(emptyList(), SearchResult.NOT_FOUND)
-    )
+    robot.assertBindViewModel(SearchViewModel(emptyList(), SearchResult.NOT_FOUND))
   }
 
   @Test
   fun test_failed_to_find_anagrams() {
-    val view = MockSearchView()
     val presenter = presenter(MockAnagramRepository().fetchFailed())
-    presenter.init(view)
+    presenter.init(robot.view)
 
     presenter.search("ofo")
 
-    view.bindTapes.assertRenders(
-        SearchViewModel(emptyList(), SearchResult.NOT_FOUND)
-    )
+    robot.assertBindViewModel(SearchViewModel(emptyList(), SearchResult.NOT_FOUND))
   }
 
   private fun presenter(
