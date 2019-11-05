@@ -1,28 +1,30 @@
 package com.bmpak.anagramsolver.ui.onboarding.arch
 
 import android.content.Context
+import com.bmpak.anagramsolver.framework.arch.Observers.RxFlowable
 import com.bmpak.anagramsolver.framework.arch.Presenter
 import com.bmpak.anagramsolver.framework.navigator.Navigator
 import com.bmpak.anagramsolver.framework.navigator.RealNavigator
 import com.bmpak.anagramsolver.framework.repository.dictionary.FirebaseDictionaryRepository
 import com.bmpak.anagramsolver.framework.usecase.FetchDictionaryUseCase
+import com.bmpak.anagramsolver.framework.usecase.MultipleFetchResult
 import com.bmpak.anagramsolver.model.Dictionary
-import com.bmpak.anagramsolver.model.DownloadStatus
-import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.*
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.DOWNLOAD_LANGUAGES
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.INSTALL_LANGUAGE
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.PICKING_LANGUAGE
 import io.reactivex.rxkotlin.plusAssign
-import io.reactivex.subscribers.ResourceSubscriber
 
 class OnboardingPresenter(
-  private val navigator: Navigator,
-  val fetchDictionaryUseCase: FetchDictionaryUseCase
+    private val navigator: Navigator,
+    val fetchDictionaryUseCase: FetchDictionaryUseCase
 ) : Presenter<OnboardingView>() {
 
   companion object {
     fun create(context: Context): OnboardingPresenter =
-      OnboardingPresenter(
-        navigator = RealNavigator(context),
-        fetchDictionaryUseCase = FetchDictionaryUseCase(FirebaseDictionaryRepository)
-      )
+        OnboardingPresenter(
+            navigator = RealNavigator(context),
+            fetchDictionaryUseCase = FetchDictionaryUseCase(FirebaseDictionaryRepository)
+        )
   }
 
   var viewModel: OnboardingViewModel = OnboardingViewModel.INITIAL
@@ -40,23 +42,22 @@ class OnboardingPresenter(
     viewWRef.get()?.showDownloadingFeedback()
     viewWRef.get()?.bind(viewModel)
 
+    val pickedDictionaries = viewModel.pickedDictionaries.filter { it.value }.keys
+
     disposables += fetchDictionaryUseCase
-      .build(Dictionary.GREEK)
-      .subscribeWith(object : ResourceSubscriber<DownloadStatus>() {
-        override fun onComplete() {
-        }
+        .build(pickedDictionaries)
+        .subscribeWith(object : RxFlowable<MultipleFetchResult>() {
+          override fun onNext(result: MultipleFetchResult) {
+            result.dictionaries.forEach {
+              viewWRef.get()?.bindDownloadStatus(it.key, it.value)
+            }
 
-        override fun onNext(downloadStatus: DownloadStatus) {
-          viewWRef.get()?.bindDownloadStatus(downloadStatus)
-          if (downloadStatus is DownloadStatus.Success) {
-            navigator.toMainScreen()
-            downloadFinished()
+            if (result.areAllDictionariesFinished) {
+              navigator.toMainScreen()
+              downloadFinished()
+            }
           }
-        }
-
-        override fun onError(e: Throwable) {
-        }
-      })
+        })
   }
 
   fun downloadFinished() {

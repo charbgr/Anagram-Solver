@@ -1,6 +1,7 @@
 package com.bmpak.anagramsolver.ui.onboarding.arch
 
 import com.bmpak.anagramsolver.framework.navigator.Navigator
+import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
 import com.google.common.truth.Truth.assertThat
 import io.mockk.spyk
@@ -17,8 +18,11 @@ class OnboardingRobot {
     assertThat(presenter?.viewModel).isEqualTo(viewModel)
   }
 
-  fun assertBindDownloadStatus(downloadStatus: DownloadStatus) {
-    verify { view.bindDownloadStatus(downloadStatus) }
+  fun assertBindDownloadStatus(dictionary: Dictionary, downloadStatus: DownloadStatus) {
+    verify { view.bindDownloadStatus(dictionary, downloadStatus) }
+  }
+
+  fun assertNavigateToMainScreen() {
+    verify { navigator.toMainScreen() }
   }
 }
-

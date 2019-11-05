@@ -11,9 +11,9 @@ sealed class DownloadStatus {
       if (totalByteCount == 0L) 0f else (bytesTransferred.toFloat() / totalByteCount) * 100
     }
 
-    override fun toString(): String {
-      return "Downloading(percentage=$percentage, totalByteCount=$totalByteCount, bytesTransferred=$bytesTransferred)"
-    }
+//    override fun toString(): String {
+//      return "Downloading(percentage=$percentage, totalByteCount=$totalByteCount, bytesTransferred=$bytesTransferred)"
+//    }
   }
 
   data class Failed(val throwable: Throwable) : DownloadStatus()

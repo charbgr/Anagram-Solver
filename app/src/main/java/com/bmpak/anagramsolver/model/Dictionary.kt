@@ -1,6 +1,13 @@
 package com.bmpak.anagramsolver.model
 
 sealed class Dictionary {
+
+  companion object {
+    val values by lazy {
+      listOf(ENGLISH, GREEK, FRANCE, GERMAN)
+    }
+  }
+
   object ENGLISH : Dictionary() {
     override fun toString(): String = "English"
   }

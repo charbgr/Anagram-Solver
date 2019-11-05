@@ -13,14 +13,25 @@ import androidx.work.Configuration
 import androidx.work.WorkManager
 import com.bmpak.anagramsolver.R
 import com.bmpak.anagramsolver.model.Dictionary
-import com.bmpak.anagramsolver.model.Dictionary.*
+import com.bmpak.anagramsolver.model.Dictionary.ENGLISH
+import com.bmpak.anagramsolver.model.Dictionary.FRANCE
+import com.bmpak.anagramsolver.model.Dictionary.GERMAN
+import com.bmpak.anagramsolver.model.Dictionary.GREEK
 import com.bmpak.anagramsolver.model.DownloadStatus
 import com.bmpak.anagramsolver.model.DownloadStatus.Downloading
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingPresenter
-import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.*
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.DOWNLOAD_LANGUAGES
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.INSTALL_LANGUAGE
+import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingStep.PICKING_LANGUAGE
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingView
 import com.bmpak.anagramsolver.ui.onboarding.arch.OnboardingViewModel
-import com.bmpak.anagramsolver.utils.*
+import com.bmpak.anagramsolver.utils.FlagView
+import com.bmpak.anagramsolver.utils.gone
+import com.bmpak.anagramsolver.utils.locationInWindow
+import com.bmpak.anagramsolver.utils.onEnd
+import com.bmpak.anagramsolver.utils.visible
+import com.bmpak.anagramsolver.utils.visibleOrGone
+import com.bmpak.anagramsolver.utils.visibleOrInvisible
 import com.google.android.material.button.MaterialButton
 
 
@@ -238,15 +249,15 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     secondaryTitle.setText(R.string.onboarding_great)
   }
 
-  override fun bindDownloadStatus(downloadStatus: DownloadStatus) {
+  override fun bindDownloadStatus(dictionary: Dictionary, downloadStatus: DownloadStatus) {
     when (downloadStatus) {
       is Downloading -> {
-        secondaryTitle.setText(downloadStatus.percentage.toString())
+        findDictionaryView(dictionary).animateToProgress(downloadStatus.percentage)
       }
       else -> {
+        // TO DO HANDLE ALL CASES
         secondaryTitle.setText(downloadStatus.toString())
       }
     }
-
   }
 }
