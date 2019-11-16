@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compile_sdk_version
@@ -37,6 +38,10 @@ dependencies {
 
     implementation deps.rx.kotlin
     implementation deps.rx.android
+
+    implementation deps.android.arch.room.core
+    implementation deps.android.arch.room.rxbinding
+    kapt deps.android.arch.room.processor
 
     implementation deps.timber
     implementation deps.okio

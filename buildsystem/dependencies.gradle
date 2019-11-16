@@ -20,7 +20,7 @@ ext {
   workmanager_version = '1.0.0-alpha04'
   timber_version = '4.7.0'
   okio_version = '1.14.1'
-  room_version = '2.0.0-alpha1'
+  room_version = "2.2.1"
   rxKotlin_version = '2.3.0'
   rxAndroid_version = '2.1.0'
 
@@ -40,8 +40,9 @@ ext {
           firebase: "android.arch.work:work-firebase:$workmanager_version"
         ],
         room : [
-          runtime: "androidx.room:room-runtime:$room_version",
-          processor: "androidx.room:room-compiler:$room_version"
+          core: "androidx.room:room-runtime:$room_version",
+          processor: "androidx.room:room-compiler:$room_version",
+          rxbinding: "androidx.room:room-rxjava2:$room_version"
         ]
       ]
     ],
