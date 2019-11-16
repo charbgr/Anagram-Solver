@@ -6,11 +6,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.bmpak.anagramsolver.R.id
 import com.bmpak.anagramsolver.R.layout
+import com.bmpak.anagramsolver.framework.data.anagram.AnagramDatabase
 import com.bmpak.anagramsolver.framework.data.anagram.AnagramRepository
-import com.bmpak.anagramsolver.framework.data.anagram.RandomTextAnagramDataSource
 import com.bmpak.anagramsolver.framework.data.anagram.RealAnagramEntityMapper
+import com.bmpak.anagramsolver.framework.data.anagram.RoomAnagramDataSource
 import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
@@ -70,7 +72,8 @@ class SearchScreen : AppCompatActivity(), SearchView {
   }
 
   private fun setUpPresenter() {
-    val repository = AnagramRepository(RandomTextAnagramDataSource, RealAnagramEntityMapper)
+    val db = Room.databaseBuilder(this, AnagramDatabase::class.java, "anagram-db").build()
+    val repository = AnagramRepository(RoomAnagramDataSource(db), RealAnagramEntityMapper)
     presenter = SearchPresenter(SearchUseCase(repository))
   }
 

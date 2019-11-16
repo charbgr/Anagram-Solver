@@ -7,14 +7,14 @@ import java.util.UUID
 
 object RandomTextAnagramDataSource : AnagramDataSource {
 
-  override fun fetch(query: CharSequence): Single<List<AnagramEntity>> {
+  override fun fetch(query: CharSequence, dictionary: Dictionary): Single<List<AnagramEntity>> {
     if (query.isEmpty()) {
       return Single.just(emptyList())
     }
     val anagrams = mutableListOf<AnagramEntity>()
     for (i in 0..((0..10).random())) {
       val randomText = UUID.randomUUID().toString()
-      anagrams.add(AnagramEntity("", randomText.substring(0, query.length), Dictionary.GREEK))
+      anagrams.add(AnagramEntity("", randomText.substring(0, query.length), "Greek"))
     }
 
     return Single.just(anagrams)

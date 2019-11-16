@@ -6,6 +6,14 @@ sealed class Dictionary {
     val values by lazy {
       listOf(ENGLISH, GREEK, FRANCE, GERMAN)
     }
+
+    fun from(value: String): Dictionary = when(value) {
+      "English" -> ENGLISH
+      "Greek" -> GREEK
+      "France" -> FRANCE
+      "German" -> GERMAN
+      else -> throw IllegalArgumentException("Maybe you missed the case --> $value on when expression")
+    }
   }
 
   object ENGLISH : Dictionary() {

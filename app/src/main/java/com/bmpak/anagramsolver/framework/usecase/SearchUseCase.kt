@@ -1,21 +1,22 @@
 package com.bmpak.anagramsolver.framework.usecase
 
+import com.bmpak.anagramsolver.App.Companion.TEST_DICTIONARY
+import com.bmpak.anagramsolver.framework.arch.RxUseCase
 import com.bmpak.anagramsolver.framework.arch.SchedulerProvider
-import com.bmpak.anagramsolver.framework.arch.SingleUseCase
 import com.bmpak.anagramsolver.framework.data.anagram.AnagramRepository
 import com.bmpak.anagramsolver.model.Anagram
-import com.bmpak.anagramsolver.utils.quarable
 import io.reactivex.Single
+import timber.log.Timber
 
 class SearchUseCase(
     private val repository: AnagramRepository,
     schedulerProvider: SchedulerProvider = SchedulerProvider.Real
-) : SingleUseCase<List<Anagram>, CharSequence>(schedulerProvider) {
+) : RxUseCase(schedulerProvider) {
 
-  @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
-  override fun build(query: CharSequence): Single<List<Anagram>> {
+  fun build(query: CharSequence): Single<List<Anagram>> {
+    Timber.d("User searches : $query")
     return repository
-        .fetchAnagrams(query.toString().quarable())
+        .fetchAnagrams(query, TEST_DICTIONARY)
         .subscribeOn(schedulerProvider.io)
         .observeOn(schedulerProvider.ui)
   }
