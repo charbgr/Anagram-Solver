@@ -4,6 +4,7 @@ import com.bmpak.anagramsolver.framework.arch.SchedulerProvider
 import com.bmpak.anagramsolver.framework.arch.SingleUseCase
 import com.bmpak.anagramsolver.framework.data.anagram.AnagramRepository
 import com.bmpak.anagramsolver.model.Anagram
+import com.bmpak.anagramsolver.utils.quarable
 import io.reactivex.Single
 
 class SearchUseCase(
@@ -13,10 +14,8 @@ class SearchUseCase(
 
   @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
   override fun build(query: CharSequence): Single<List<Anagram>> {
-    val queryChars = query.toString().toCharArray()
-    val safeQuery = queryChars.sortedArray().joinToString("")
     return repository
-        .fetchAnagrams(safeQuery)
+        .fetchAnagrams(query.toString().quarable())
         .subscribeOn(schedulerProvider.io)
         .observeOn(schedulerProvider.ui)
   }
