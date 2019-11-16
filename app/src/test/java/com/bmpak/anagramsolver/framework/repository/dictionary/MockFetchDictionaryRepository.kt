@@ -2,12 +2,17 @@ package com.bmpak.anagramsolver.framework.repository.dictionary
 
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
-import io.reactivex.Flowable
+import io.reactivex.BackpressureStrategy.LATEST
+import io.reactivex.subjects.BehaviorSubject
 
-class MockFetchDictionaryRepository(
-  private val downloadStatus: DownloadStatus = DownloadStatus.Pause
-) : FetchDictionaryRepository {
+class MockFetchDictionaryRepository(initialDownloadStatus: DownloadStatus) : FetchDictionaryRepository {
 
-  override fun fetch(dictionary: Dictionary) = Flowable.just(downloadStatus)
+  private val fetchDictionaryPubSub = BehaviorSubject.createDefault(initialDownloadStatus)
+
+  override fun fetch(dictionary: Dictionary) = fetchDictionaryPubSub.toFlowable(LATEST)
+
+  fun fireEvent(downloadStatus: DownloadStatus) {
+    fetchDictionaryPubSub.onNext(downloadStatus)
+  }
 }
 
