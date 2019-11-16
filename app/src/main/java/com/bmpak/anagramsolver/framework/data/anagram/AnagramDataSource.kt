@@ -4,4 +4,5 @@ import io.reactivex.Single
 
 interface AnagramDataSource {
   fun fetch(query: CharSequence): Single<List<AnagramEntity>>
+  fun put(anagramEntity: AnagramEntity)
 }
