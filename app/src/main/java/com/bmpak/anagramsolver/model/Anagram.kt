@@ -1,3 +1,3 @@
 package com.bmpak.anagramsolver.model
 
-data class Anagram(val value: String)
+data class Anagram(val word: String, val dictionary: Dictionary)

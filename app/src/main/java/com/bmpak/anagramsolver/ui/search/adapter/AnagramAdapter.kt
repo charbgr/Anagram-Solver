@@ -85,7 +85,7 @@ class AnagramAdapter : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun bind(item: AnagramItem, position: Int) {
       item as ActualAnagramItem
-      titleEditText.text = item.anagram.value
+      titleEditText.text = item.anagram.word
     }
   }
 
