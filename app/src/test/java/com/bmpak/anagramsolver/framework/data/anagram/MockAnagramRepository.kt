@@ -1,10 +1,10 @@
-package com.bmpak.anagramsolver.framework.repository.anagram
+package com.bmpak.anagramsolver.framework.data.anagram
 
 import com.bmpak.anagramsolver.Boom
 import com.bmpak.anagramsolver.utils.Either
 import io.reactivex.Single
 
-class MockAnagramRepository : AnagramRepository {
+class MockAnagramRepository : AnagramDataSource {
 
   private var fetchPayload: Either<List<String>, Throwable> = Either.Right(Boom)
 

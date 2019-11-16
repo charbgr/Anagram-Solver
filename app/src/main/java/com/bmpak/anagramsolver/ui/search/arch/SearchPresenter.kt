@@ -2,6 +2,7 @@ package com.bmpak.anagramsolver.ui.search.arch
 
 import com.bmpak.anagramsolver.framework.arch.Presenter
 import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
+import com.bmpak.anagramsolver.model.Anagram
 import com.bmpak.anagramsolver.ui.search.adapter.ActualAnagramItem
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramItem
 import io.reactivex.observers.DisposableSingleObserver
@@ -15,8 +16,8 @@ class SearchPresenter(
   fun search(query: CharSequence) {
     disposables += searchUseCase
       .build(query)
-      .subscribeWith(object : DisposableSingleObserver<List<String>>() {
-        override fun onSuccess(anagrams: List<String>) {
+      .subscribeWith(object : DisposableSingleObserver<List<Anagram>>() {
+        override fun onSuccess(anagrams: List<Anagram>) {
           val anagramsItems: List<AnagramItem> = anagrams.map { ActualAnagramItem(it) }
           viewWRef.get()?.bind(SearchViewModel(anagramsItems, SearchResult.of(anagramsItems)))
         }

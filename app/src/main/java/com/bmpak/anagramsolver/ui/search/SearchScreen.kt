@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bmpak.anagramsolver.R.id
 import com.bmpak.anagramsolver.R.layout
-import com.bmpak.anagramsolver.framework.repository.anagram.MockAnagramRepository2
+import com.bmpak.anagramsolver.framework.data.anagram.AnagramRepository
+import com.bmpak.anagramsolver.framework.data.anagram.RandomTextAnagramDataSource
+import com.bmpak.anagramsolver.framework.data.anagram.RealAnagramEntityMapper
 import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramAdapter
 import com.bmpak.anagramsolver.ui.search.arch.SearchPresenter
@@ -68,7 +70,8 @@ class SearchScreen : AppCompatActivity(), SearchView {
   }
 
   private fun setUpPresenter() {
-    presenter = SearchPresenter(SearchUseCase(MockAnagramRepository2))
+    val repository = AnagramRepository(RandomTextAnagramDataSource, RealAnagramEntityMapper)
+    presenter = SearchPresenter(SearchUseCase(repository))
   }
 
   override fun bind(viewModel: SearchViewModel) {

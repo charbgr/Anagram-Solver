@@ -1,8 +1,8 @@
 package com.bmpak.anagramsolver.ui.search.arch
 
 import com.bmpak.anagramsolver.UnitTest
-import com.bmpak.anagramsolver.framework.repository.anagram.AnagramRepository
-import com.bmpak.anagramsolver.framework.repository.anagram.MockAnagramRepository
+import com.bmpak.anagramsolver.framework.data.anagram.AnagramDataSource
+import com.bmpak.anagramsolver.framework.data.anagram.MockAnagramRepository
 import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
 import org.junit.Test
 
@@ -45,6 +45,6 @@ class SearchPresenterTest : UnitTest() {
   }
 
   private fun presenter(
-      repository: AnagramRepository
+      repository: AnagramDataSource
   ): SearchPresenter = SearchPresenter(SearchUseCase(repository, NOW_SCHEDULER_PROVIDER))
 }

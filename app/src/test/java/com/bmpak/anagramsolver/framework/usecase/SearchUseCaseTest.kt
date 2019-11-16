@@ -2,7 +2,7 @@ package com.bmpak.anagramsolver.framework.usecase
 
 import com.bmpak.anagramsolver.Boom
 import com.bmpak.anagramsolver.UnitTest
-import com.bmpak.anagramsolver.framework.repository.anagram.MockAnagramRepository
+import com.bmpak.anagramsolver.framework.data.anagram.MockAnagramRepository
 import org.junit.Test
 
 class SearchUseCaseTest : UnitTest() {
