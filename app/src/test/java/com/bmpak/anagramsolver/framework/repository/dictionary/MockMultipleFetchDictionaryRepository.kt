@@ -2,8 +2,8 @@ package com.bmpak.anagramsolver.framework.repository.dictionary
 
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
-import io.reactivex.BackpressureStrategy.LATEST
-import io.reactivex.subjects.PublishSubject
+import io.reactivex.rxjava3.core.BackpressureStrategy.LATEST
+import io.reactivex.rxjava3.subjects.PublishSubject
 
 class MockMultipleFetchDictionaryRepository(
     vararg dictionaries: Dictionary

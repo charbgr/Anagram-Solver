@@ -4,8 +4,8 @@ import com.bmpak.anagramsolver.framework.arch.Presenter
 import com.bmpak.anagramsolver.framework.usecase.SearchUseCase
 import com.bmpak.anagramsolver.ui.search.adapter.ActualAnagramItem
 import com.bmpak.anagramsolver.ui.search.adapter.AnagramItem
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.rxkotlin.plusAssign
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
+import io.reactivex.rxjava3.kotlin.plusAssign
 import timber.log.Timber
 
 class SearchPresenter(

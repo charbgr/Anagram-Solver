@@ -1,6 +1,6 @@
 package com.bmpak.anagramsolver.framework.repository.anagram
 
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import java.util.*
 
 object MockAnagramRepository2 : AnagramRepository {

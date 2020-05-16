@@ -31,8 +31,6 @@ class FetchDictionaryUseCaseTest : UnitTest() {
           repository.fireEvent(Downloading(5, 10))
 
           assertThat(isCancelled).isFalse()
-          assertThat(isTerminated).isFalse()
-          assertThat(isDisposed).isFalse()
           assertThat(values()).hasSize(2)
           assertThat(values()[1]).isEqualTo(FetchResult(GREEK, Downloading(5, 10)))
         }
@@ -49,10 +47,7 @@ class FetchDictionaryUseCaseTest : UnitTest() {
         .apply {
           assertThat(values()).isNotEmpty()
           assertThat(values().first()).isEqualTo(MultipleFetchResult.INITIAL)
-
           assertThat(isCancelled).isFalse()
-          assertThat(isTerminated).isFalse()
-          assertThat(isDisposed).isFalse()
 
           val firstMultiFetchResult = MultipleFetchResult(mapOf(GREEK to Downloading(5, 10)))
           repository.fireEvent(GREEK, Downloading(5, 10))

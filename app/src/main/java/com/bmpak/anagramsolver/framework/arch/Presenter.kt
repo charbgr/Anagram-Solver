@@ -1,6 +1,6 @@
 package com.bmpak.anagramsolver.framework.arch
 
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 
 abstract class Presenter<T : View> {

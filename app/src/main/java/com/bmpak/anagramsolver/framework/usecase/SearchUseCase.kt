@@ -1,13 +1,14 @@
 package com.bmpak.anagramsolver.framework.usecase
 
+import com.bmpak.anagramsolver.framework.arch.RealSchedulerProvider
 import com.bmpak.anagramsolver.framework.arch.SchedulerProvider
 import com.bmpak.anagramsolver.framework.arch.SingleUseCase
 import com.bmpak.anagramsolver.framework.repository.anagram.AnagramRepository
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 
 class SearchUseCase(
   private val repository: AnagramRepository,
-  schedulerProvider: SchedulerProvider = SchedulerProvider.Real
+  schedulerProvider: SchedulerProvider = RealSchedulerProvider
 ) : SingleUseCase<List<String>, CharSequence>(schedulerProvider) {
 
   @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")

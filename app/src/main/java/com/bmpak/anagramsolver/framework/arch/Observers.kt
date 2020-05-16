@@ -1,9 +1,9 @@
 package com.bmpak.anagramsolver.framework.arch
 
-import io.reactivex.observers.DisposableCompletableObserver
-import io.reactivex.observers.DisposableObserver
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.subscribers.DisposableSubscriber
+import io.reactivex.rxjava3.observers.DisposableCompletableObserver
+import io.reactivex.rxjava3.observers.DisposableObserver
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
+import io.reactivex.rxjava3.subscribers.DisposableSubscriber
 import timber.log.Timber
 
 /**

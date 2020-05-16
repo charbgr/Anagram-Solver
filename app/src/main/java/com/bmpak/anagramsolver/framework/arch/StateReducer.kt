@@ -1,7 +1,7 @@
 package com.bmpak.anagramsolver.framework.arch
 
-import io.reactivex.Flowable
-import io.reactivex.functions.BiFunction
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.functions.BiFunction
 
 /**
  * Generic StateReducer to eliminate boilerplate.

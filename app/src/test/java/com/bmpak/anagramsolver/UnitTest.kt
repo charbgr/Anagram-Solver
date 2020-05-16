@@ -1,8 +1,8 @@
 package com.bmpak.anagramsolver
 
 import com.bmpak.anagramsolver.framework.arch.SchedulerProvider
-import io.reactivex.Scheduler
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 open class UnitTest {

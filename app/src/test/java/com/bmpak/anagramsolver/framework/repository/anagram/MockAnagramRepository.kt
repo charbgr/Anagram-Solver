@@ -2,7 +2,7 @@ package com.bmpak.anagramsolver.framework.repository.anagram
 
 import com.bmpak.anagramsolver.Boom
 import com.bmpak.anagramsolver.utils.Either
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 
 class MockAnagramRepository : AnagramRepository {
 

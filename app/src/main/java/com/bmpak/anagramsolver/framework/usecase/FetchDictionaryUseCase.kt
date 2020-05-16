@@ -1,6 +1,7 @@
 package com.bmpak.anagramsolver.framework.usecase
 
 import com.bmpak.anagramsolver.framework.arch.FlowableUseCase
+import com.bmpak.anagramsolver.framework.arch.RealSchedulerProvider
 import com.bmpak.anagramsolver.framework.arch.SchedulerProvider
 import com.bmpak.anagramsolver.framework.arch.StateReducer
 import com.bmpak.anagramsolver.framework.arch.withStateReducer
@@ -8,11 +9,11 @@ import com.bmpak.anagramsolver.framework.repository.dictionary.FetchDictionaryRe
 import com.bmpak.anagramsolver.model.Dictionary
 import com.bmpak.anagramsolver.model.DownloadStatus
 import com.bmpak.anagramsolver.model.DownloadStatus.Success
-import io.reactivex.Flowable
+import io.reactivex.rxjava3.core.Flowable
 
 class FetchDictionaryUseCase(
     private val repository: FetchDictionaryRepository,
-    schedulerProvider: SchedulerProvider = SchedulerProvider.Real
+    schedulerProvider: SchedulerProvider = RealSchedulerProvider
 ) : FlowableUseCase<FetchResult, Dictionary>(schedulerProvider) {
 
   fun build(dictionaries: Iterable<Dictionary>): Flowable<MultipleFetchResult> {

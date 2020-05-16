@@ -42,8 +42,8 @@
 
   <style name="AppTheme.BottomAppBar">
     <item name="backgroundTint">@android:color/white</item>
-    <item name="fabAttached">true</item>
-    <item name="fabCradleDiameter">@dimen/bottomappbar_fab_cradle_diameter</item>
+<!--    <item name="fabAttached">true</item>-->
+<!--    <item name="fabCradleDiameter">@dimen/bottomappbar_fab_cradle_diameter</item>-->
     <item name="fabCradleRoundedCornerRadius">@dimen/bottomappbar_fab_cradle_rounded_corner_radius</item>
     <item name="fabCradleVerticalOffset">@dimen/bottomappbar_fab_cradle_vertical_offset</item>
   </style>
