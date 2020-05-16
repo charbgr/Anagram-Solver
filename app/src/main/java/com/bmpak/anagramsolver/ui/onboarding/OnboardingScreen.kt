@@ -60,7 +60,6 @@ class OnboardingScreen : AppCompatActivity(), OnboardingView {
     setUpPresenter()
     animateBackground()
     animateContent()
-    WorkManager.initialize(this, Configuration.Builder().build())
   }
 
   override fun onResume() {
