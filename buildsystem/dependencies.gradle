@@ -10,7 +10,7 @@ ext {
   // Libs
   appcompat_version = '1.2.0-rc01'
   material_version = '1.2.0-alpha06'
-  kotlin_version = '1.4.10'
+  kotlin_version = '1.5.10'
   constraintlayout_version = '2.0.0-beta6'
   firebase_core_version = '17.4.1'
   firebase_database_version = '16.0.1'
