@@ -8,26 +8,27 @@ ext {
   version_name = "2.1"
 
   // Libs
-  appcompat_version = '1.2.0-rc01'
-  material_version = '1.2.0-alpha06'
-  kotlin_version = '1.5.10'
-  constraintlayout_version = '2.0.0-beta6'
-  firebase_core_version = '17.4.1'
-  firebase_database_version = '16.0.1'
-  firebase_performance_version = '16.0.0'
-  firebase_storage_version = '16.0.1'
-  workmanager_version = '1.0.1'
-  timber_version = '4.7.1'
-  okio_version = '2.6.0'
-  room_version = '2.2.5'
-  rxKotlin_version = '3.0.0'
-  rxAndroid_version = '3.0.0'
-  rxBinding_version = '3.1.0'
+  compose_version = "1.0.0-beta09"
+  appcompat_version = "1.2.0-rc01"
+  material_version = "1.2.0-alpha06"
+  kotlin_version = "1.5.10"
+  constraintlayout_version = "2.0.0-beta6"
+  firebase_core_version = "17.4.1"
+  firebase_database_version = "16.0.1"
+  firebase_performance_version = "16.0.0"
+  firebase_storage_version = "16.0.1"
+  workmanager_version = "1.0.1"
+  timber_version = "4.7.1"
+  okio_version = "2.6.0"
+  room_version = "2.2.5"
+  rxKotlin_version = "3.0.0"
+  rxAndroid_version = "3.0.0"
+  rxBinding_version = "3.1.0"
 
   // test
-  truth_version = '1.0.1'
-  junit_version = '4.12'
-  mockk_version = '1.10.0'
+  truth_version = "1.0.1"
+  junit_version = "4.12"
+  mockk_version = "1.10.0"
 
   deps = [
     android : [
@@ -43,6 +44,15 @@ ext {
           runtime: "androidx.room:room-runtime:$room_version",
           processor: "androidx.room:room-compiler:$room_version"
         ]
+      ],
+      compose : [
+        ui: "androidx.compose.ui:ui:$compose_version",
+        uiTooling: "androidx.compose.ui:ui-tooling:$compose_version",
+        foundation: "androidx.compose.foundation:foundation:$compose_version",
+        material: "androidx.compose.material:material:$compose_version",
+        activity: "androidx.activity:activity-compose:1.3.0-beta01",
+        viewModel: "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha05"
+
       ]
     ],
     firebase : [
@@ -70,7 +80,8 @@ ext {
         truth: "com.google.truth:truth:$truth_version",
         junit: "junit:junit:$junit_version",
         room: "androidx.room:room-testing:$room_version",
-        mockk: "io.mockk:mockk:$mockk_version"
+        mockk: "io.mockk:mockk:$mockk_version",
+        compose: "androidx.compose.ui:ui-test-junit4:$compose_version"
     ]
   ]
 }

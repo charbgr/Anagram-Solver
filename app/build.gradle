@@ -12,6 +12,7 @@ android {
         versionName rootProject.ext.version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -19,9 +20,22 @@ android {
         }
     }
 
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
     }
 }
 
@@ -34,6 +48,13 @@ dependencies {
     implementation deps.android.material
 
     implementation deps.android.arch.workmanager.runtime
+
+    implementation deps.android.compose.ui
+    implementation deps.android.compose.uiTooling
+    implementation deps.android.compose.foundation
+    implementation deps.android.compose.material
+    implementation deps.android.compose.activity
+    implementation deps.android.compose.viewModel
 
     implementation deps.firebase.core
     implementation deps.firebase.database
